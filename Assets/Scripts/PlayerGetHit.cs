@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerGetHit : MonoBehaviour
 {
     private IPlayerController _myPc;
+    private GameManager myGM;
     
     // Start is called before the first frame update
     void Start()

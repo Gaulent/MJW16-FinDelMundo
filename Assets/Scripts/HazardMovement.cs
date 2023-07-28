@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class HazardMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 1f;
+    //[SerializeField] private float speed = 1f;
+    private IGameManager myGM;
 
     // Start is called before the first frame update
     void Start()
     {
+        myGM = FindObjectOfType<GameManager>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += speed * Time.deltaTime * Vector3.back;
+        transform.position += myGM.GetGameSpeed() * Time.deltaTime * Vector3.back;
     }
 }
