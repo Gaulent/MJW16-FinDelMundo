@@ -4,11 +4,38 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour, IGameManager
 {
-    int dotamina = 100;
+    bool gameStatus = false;
+    int dopamina = 100;
+
+    public void Update()
+    {
+        if (dopamina < 0)
+        {
+            GameOver();
+        }
+    }
 
     public void StartGame()
     {
-        dotamina = 100;
+        dopamina = 100;
+        InternalGameStatus(true);
+    }
+
+    public void GameOver()
+    {
+        InternalGameStatus(false);
+    }
+
+    private void InternalGameStatus(bool status)
+    {
+        gameStatus = status;
+        GameObject.Find("Player").GetComponent<IPlayerController>().EnableMovement(status);
+        GameObject.Find("SpawnManager").GetComponent<ISpawnManager>().SetSpawnStatus(status);
+    }
+
+    public bool GetGameStatus()
+    {
+        return gameStatus;
     }
 
 }
