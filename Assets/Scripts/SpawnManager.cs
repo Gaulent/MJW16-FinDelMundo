@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour, ISpawnManager
 {
     public GameObject PrefabToSpawn;
 
     public float startDelay = 2, repeatRate = 2;
 
-    bool IsActiveTheGame;
+    [SerializeField] List<GameObject> SpawnTypes;
 
-    private Vector3 spawnLocation = new Vector3(25,0,0);
+    [SerializeField] private int SpawnRange = 20;
+    bool IsActiveTheGame;
 
     private PlayerController playerController;
 
@@ -22,20 +23,22 @@ public class SpawnManager : MonoBehaviour
             .GetComponent<PlayerController>();;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void SpawnObstacule()
     {
-        if(/*GameObject.Find("Player")
-            .GetComponent<PlayerController>().*/playerController.GetIsGameOver() )
+        if(!IsActiveTheGame)
         {
             CancelInvoke("SpawnObstacule");return;
         }
 
-        Instantiate(PrefabToSpawn, spawnLocation, PrefabToSpawn.transform.rotation);
+        Instantiate(SpawnTypes[Random.Range(0, SpawnTypes.Count)], 
+            new Vector3(Random.Range(-SpawnRange,SpawnRange),40 ,1), 
+            PrefabToSpawn.transform.rotation
+        );
+    }
+
+    public void SetSpawnStatus(bool status)
+    {
+        if (status){InvokeRepeating("SpawnObstacule", startDelay, repeatRate); }
+        this.IsActiveTheGame = status;
     }
 }
