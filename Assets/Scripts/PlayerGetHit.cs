@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class PlayerGetHit : MonoBehaviour
 {
-    private PlayerController _myPc;
+    private IPlayerController _myPc;
     
     // Start is called before the first frame update
     void Start()
     {
-        _myPc = GetComponent<PlayerController>();
+        _myPc = GetComponent<IPlayerController>();
     }
 
     // Update is called once per frame
