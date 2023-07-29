@@ -35,6 +35,9 @@ public class MovieLoad : MonoBehaviour
         // Each time we reach the end, we slow down the playback by a factor of 10.
         videoPlayer.loopPointReached += EndReached;
 
+
+        TriggerVideo(); // TEMPORARY TODO
+
     }
 
     // Update is called once per frame

@@ -44,3 +44,6 @@ TagManager:
   - name: Hazards
     uniqueID: 1680381685
     locked: 0
+  - name: Front
+    uniqueID: 3949087087
+    locked: 0

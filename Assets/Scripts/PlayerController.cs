@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private bool performJump = false;
     private Rigidbody myRB;
     [SerializeField] private float jumpForce = 10f;
+    private Animator handAnimator;
 
     /*public void EnableMovement(bool movement)
     {
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         //EnableMovement(true);
         myRB = GetComponent<Rigidbody>();
+        handAnimator = GetComponentInChildren<Animator>();
     }
 
     void HandlePLayerMovement(float moveAmount)
@@ -42,6 +44,10 @@ public class PlayerController : MonoBehaviour, IPlayerController
         HandlePLayerMovement(Input.GetAxisRaw("Horizontal"));
         if (Input.GetButtonDown("Jump") && !GetIsJumping())
             performJump = true;
+        if (Input.GetButton("Fire1"))
+            handAnimator.SetBool("HandDown",true);
+        else
+            handAnimator.SetBool("HandDown",false);
     }
 
     private void FixedUpdate()
@@ -55,7 +61,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     public bool GetIsJumping()
     {
-        return Mathf.Abs(myRB.velocity.y) > Mathf.Epsilon;
+        return Mathf.Abs(myRB.velocity.y) > Mathf.Epsilon; // Mejorable TODO
         
     }
 
