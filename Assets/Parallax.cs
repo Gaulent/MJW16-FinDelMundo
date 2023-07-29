@@ -25,7 +25,6 @@ public class Parallax : MonoBehaviour
     {
         Vector3 delta = (player.transform.position - playerDefaultPosition);
         Vector3 moveAmount = new Vector3(-delta.x*horizontalMovement, delta.y*-verticalMovement, 0);
-        Debug.Log(moveAmount);
         picture.position = backgroundDefaultPosition + moveAmount;
     }
 }

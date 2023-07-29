@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour, IGameManager
         spawnManager = GameObject.Find("SpawnManager").GetComponent<ISpawnManager>();
 
         playerController.OnGameOverSignal.AddListener(this.GameOver);
+        StartGame();
     }
 
     public float GetGameSpeed()
