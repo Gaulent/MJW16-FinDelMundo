@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     [SerializeField] private float rangeMovement = 3f;
     [SerializeField] private float speed = 1f;
     private bool performJump = false;
+    private ISoundManager soundManager;
     private Rigidbody myRB;
     [SerializeField] private float jumpForce = 10f;
     private Animator handAnimator;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     void Start()
     {
         //EnableMovement(true);
+        soundManager = GameObject.Find("SoundManager").GetComponent<ISoundManager>();
         myRB = GetComponent<Rigidbody>();
         handAnimator = GetComponentInChildren<Animator>();
     }
@@ -43,11 +45,17 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         HandlePLayerMovement(Input.GetAxisRaw("Horizontal"));
         if (Input.GetButtonDown("Jump") && !GetIsJumping())
+        {
             performJump = true;
-        if (Input.GetButton("Fire1"))
-            handAnimator.SetBool("HandDown",true);
-        else
-            handAnimator.SetBool("HandDown",false);
+            soundManager.PlaySFX(ESFXType.Jump);
+
+            if (Input.GetButton("Fire1"))
+                handAnimator.SetBool("HandDown",true);
+            else
+                handAnimator.SetBool("HandDown",false);
+
+        }
+
     }
 
     private void FixedUpdate()
@@ -67,6 +75,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     void OnCollisionEnter(Collision collision)
     {
+        soundManager.PlaySFX(ESFXType.BrokenGlass);
         //GameOverSignal.Invoke(); <--- TODO
     }
 }
