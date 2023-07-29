@@ -1404,8 +1404,7 @@ MonoBehaviour:
   BackgroundMode: 0
   minX: 4
   maxX: 5
-  SpawnTypes:
-  - {fileID: 6906312356398871822, guid: df4016f324936c541aa2528fc187362a, type: 3}
+  SpawnTypes: []
   SpawnRange: 3
 --- !u!1001 &1446220402
 PrefabInstance:
