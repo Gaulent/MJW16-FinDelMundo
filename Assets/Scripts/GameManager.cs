@@ -88,9 +88,9 @@ public class GameManager : MonoBehaviour, IGameManager
         GameObject.Find("Player").GetComponent<IPlayerController>().EnableMovement(status);
         GameObject.Find("SpawnManager").GetComponent<ISpawnManager>().SetSpawnStatus(status);
     */
-      //playerController.EnableMovement(status);
-      spawnManager.SetSpawnStatus(true);
 
+      //playerController.EnableMovement(status);
+      spawnManager.SetSpawnStatus(status);
     }
 
     public bool GetGameStatus()
