@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour, IGameManager
 // DEPRECTED: Difficulty By Time
 //    DateTime currentTime;
     ISpawnManager spawnManager;
+    ISpawnManager backgroundSpawnManager;
     [SerializeField] private float gameSpeed = 10f;
     private bool canLowerHand = true;
     [SerializeField] private Sprite[] damageSprites;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour, IGameManager
     {
         playerController = GameObject.Find("Player").GetComponent<IPlayerController>();
         spawnManager = GameObject.Find("SpawnManager").GetComponent<ISpawnManager>();
+        backgroundSpawnManager = GameObject.Find("BackgroundSpawnManager").GetComponent<ISpawnManager>();
         damageSpriteRenderer = GameObject.FindWithTag("DamageSprite").GetComponent<SpriteRenderer>();
         dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
         dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
@@ -161,6 +163,7 @@ public class GameManager : MonoBehaviour, IGameManager
 
       //playerController.EnableMovement(status);
         spawnManager.SetSpawnStatus(status);
+        backgroundSpawnManager.SetSpawnStatus(status);
     }
 
     public bool GetGameStatus()
