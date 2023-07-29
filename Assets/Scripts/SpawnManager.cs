@@ -20,7 +20,7 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
 
 //    [SerializeField] List<int> LocationSpawns = new List<int>(){-4,};
 
-    [SerializeField] private int SpawnRange = 20;
+    [SerializeField] private float SpawnRange = 20f;
 
     protected UnityEvent WaveEndedSignal = new UnityEvent();
 

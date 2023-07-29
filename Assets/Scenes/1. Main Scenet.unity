@@ -552,7 +552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dopamineDepleteRatio: 50
   dopamineIncreaseRatio: 20
-  maxGameSpeed: 10
+  maxGameSpeed: 15
   damageSprites:
   - {fileID: 0}
   - {fileID: 21300000, guid: e35105e722ce4d847b4b0dfd756805cf, type: 3}
@@ -993,7 +993,8 @@ MonoBehaviour:
   SpawnTypes:
   - {fileID: 3512263104645895271, guid: c21af3fa920b526498cdb1db1ee04d49, type: 3}
   - {fileID: 1470226260408958988, guid: a883487ab4ad9b3479b87671d79714b9, type: 3}
-  SpawnRange: 3
+  - {fileID: 1470226260408958988, guid: 42fb2b1906adf454490aa9f1c076cd02, type: 3}
+  SpawnRange: 3.5
 --- !u!1 &1225647143
 GameObject:
   m_ObjectHideFlags: 0
