@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour, IGameManager
     [SerializeField] private float maxGameSpeed = 10f;
     private float gameSpeed = 0f;
     ISpawnManager backgroundSpawnManager;
+    private ISpawnManager powerUpSpawnManager;
     private bool canLowerHand = true;
     [SerializeField] private Sprite[] damageSprites;
     private int hitPoints = 0;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour, IGameManager
         playerController = GameObject.Find("Player").GetComponent<IPlayerController>();
         spawnManager = GameObject.Find("SpawnManager").GetComponent<ISpawnManager>();
         backgroundSpawnManager = GameObject.Find("BackgroundSpawnManager").GetComponent<ISpawnManager>();
+        powerUpSpawnManager = GameObject.Find("PowerUpSpawnManager").GetComponent<ISpawnManager>();
         damageSpriteRenderer = GameObject.FindWithTag("DamageSprite").GetComponent<SpriteRenderer>();
         dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
         dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
@@ -166,6 +168,7 @@ public class GameManager : MonoBehaviour, IGameManager
       //playerController.EnableMovement(status);
         spawnManager.SetSpawnStatus(status);
         backgroundSpawnManager.SetSpawnStatus(status);
+        powerUpSpawnManager.SetSpawnStatus(status);
     }
 
     public bool GetGameStatus()

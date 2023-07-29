@@ -17,6 +17,12 @@ public class HazardMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Delete if it's outside of the screen
+        if (transform.position.z < -2)
+        {
+            Destroy(gameObject);
+        }
+
         transform.position += myGM.GetGameSpeed() * Time.deltaTime * Vector3.back;
     }
 }
