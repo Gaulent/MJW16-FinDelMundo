@@ -48,13 +48,11 @@ public class PlayerController : MonoBehaviour, IPlayerController
         {
             performJump = true;
             soundManager.PlaySFX(ESFXType.Jump);
-
-            if (Input.GetButton("Fire1"))
-                handAnimator.SetBool("HandDown",true);
-            else
-                handAnimator.SetBool("HandDown",false);
-
         }
+        if (Input.GetButton("Fire1"))
+            handAnimator.SetBool("HandDown",true);
+        else
+            handAnimator.SetBool("HandDown",false);
 
     }
 
