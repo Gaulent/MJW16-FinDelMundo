@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour, IGameManager
 
         playerController.OnGameOverSignal.AddListener(this.GameOver);
         spawnManager.OnWaveEndedSignal.AddListener(WaveEnded);
+        
         StartGame();
     }
 
@@ -154,6 +155,7 @@ public class GameManager : MonoBehaviour, IGameManager
         InternalGameStatus(false);
         gameSpeed = 0;
         playerController.Disable();
+        FindObjectOfType<MovieLoad>().StopVideo(); // TODO NO SE PARA
         gameOverCanvas.SetActive(true);
         
         EventSystem es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
