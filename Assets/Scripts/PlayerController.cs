@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     public bool GetIsJumping()
     {
-        return Mathf.Abs(myRB.velocity.y) > Mathf.Epsilon; // Mejorable TODO
+        return Mathf.Abs(myRB.velocity.y) > 0.1f; // Mejorable TODO
         
     }
 
@@ -81,16 +81,18 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void OnTriggerEnter(Collider other)
     {
-        soundManager.PlaySFX(ESFXType.BrokenGlass);
+        
         //GameOverSignal.Invoke(); <--- TODO
         
         if (other.gameObject.layer == LayerMask.NameToLayer("HighHazard"))
         {
             myGM.GetDamage();
+            soundManager.PlaySFX(ESFXType.BrokenGlass);
         }
         if (!GetIsJumping() && other.gameObject.layer == LayerMask.NameToLayer("LowHazard"))
         {
             myGM.GetDamage();
+            soundManager.PlaySFX(ESFXType.BrokenGlass);
         }
     }
     

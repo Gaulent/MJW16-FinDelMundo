@@ -196,4 +196,12 @@ public class GameManager : MonoBehaviour, IGameManager
 
     }
 
+    // Testing Time Lines
+    public void EndOfLevel()
+    {
+        InternalGameStatus(false);
+        gameSpeed = 0;
+        playerController.Disable();
+    }
+
 }
