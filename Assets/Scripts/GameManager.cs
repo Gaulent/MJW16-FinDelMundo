@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour, IGameManager
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour, IGameManager
     private SpriteRenderer damageSpriteRenderer;
     private Slider dopamineGauge;
     private Image dopamineBarGauge;
+    [SerializeField] private GameObject gameOverCanvas;
 
     [SerializeField] private List<int> EnemiesByWaves;
 
@@ -152,7 +154,11 @@ public class GameManager : MonoBehaviour, IGameManager
         InternalGameStatus(false);
         gameSpeed = 0;
         playerController.Disable();
-
+        gameOverCanvas.SetActive(true);
+        
+        EventSystem es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        es.SetSelectedGameObject(null);
+        es.SetSelectedGameObject(es.firstSelectedGameObject);
     }
 
     private void InternalGameStatus(bool status)
