@@ -6,10 +6,13 @@ public class MovieLoad : MonoBehaviour
 {
     // Start is called before the first frame update
     bool isStillShown = false;
+    ISoundManager soundManager;
+    string currentFileLoaded = "";
     [SerializeField] List<string> list;
     UnityEngine.Video.VideoPlayer videoPlayer;
     void Start()
     {
+        GameObject.Find("SoundManager").GetComponent<ISoundManager>();
         videoPlayer = this.gameObject.AddComponent<UnityEngine.Video.VideoPlayer>();
                 // Play on awake defaults to true. Set it to false to avoid the url set
         // below to auto-start playback since we're in Start().
@@ -58,19 +61,26 @@ public class MovieLoad : MonoBehaviour
         // associated with this preparation one can use videoPlayer.Prepare() along with
         // its prepareCompleted event.
         isStillShown = true;
-        videoPlayer.Play();
+        this.Play(videoPlayer);
+    }
+
+    private void Play(VideoPlayer vp)
+    {
+        soundManager.PlayAudioFromVideo(currentFileLoaded,this.gameObject);
+        vp.Play();
     }
 
     private void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
         if (!isStillShown){vp.Stop();}
         vp.url = GetUrl();
-        vp.Play();
+        this.Play(vp);
         // vp.playbackSpeed = vp.playbackSpeed / 10.0F;
     }
 
     string GetUrl()
     {
-        return Application.streamingAssetsPath + "/" + list[Random.Range(0, list.Count)];
+        currentFileLoaded = list[Random.Range(0, list.Count)];
+        return Application.streamingAssetsPath + "/" + currentFileLoaded;
     }
 }
