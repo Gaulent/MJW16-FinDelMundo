@@ -6,14 +6,52 @@ public class MovieLoad : MonoBehaviour
 {
     // Start is called before the first frame update
     bool isStillShown = false;
+    bool isRotanding = false;
+    [SerializeField] float rotatorSpeed = 5f;
     [SerializeField] List<string> list;
     UnityEngine.Video.VideoPlayer videoPlayer;
     void Start()
     {
         videoPlayer = this.gameObject.AddComponent<UnityEngine.Video.VideoPlayer>();
         //list = new List<string>() { "example1.mp4", "example2_reformat.mp4" };
+        
         TriggerVideo();
+        OpeningMobile();
     }
+
+    private void OpeningMobile()
+    {
+            StartCoroutine(RotatorEngine(0.5f));
+        
+    }
+
+    
+    private void ClosingMobile()
+    {
+        StartCoroutine(RotatorEngine(0));
+    }
+
+    IEnumerator RotatorEngine( float targetRotator )
+    {
+        if (isRotanding){yield return null;}
+        isRotanding = true;
+        while(transform.rotation.x <= targetRotator)
+        {
+            
+            yield return new WaitForSeconds(0.1f);
+            transform.rotation = 
+                Quaternion.Lerp(transform.rotation, 
+                    new Quaternion(
+                            targetRotator ,
+                            transform.rotation.y,
+                            transform.rotation.z, 
+                            transform.rotation.w),
+                            rotatorSpeed * Time.deltaTime
+                        );
+        }
+        isRotanding = false;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -36,6 +74,9 @@ public class MovieLoad : MonoBehaviour
 
         // Set the video to play. URL supports local absolute or relative paths.
         // Here, using absolute.
+
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+
         videoPlayer.url = GetUrl();
 
         // Restart from beginning when done.
