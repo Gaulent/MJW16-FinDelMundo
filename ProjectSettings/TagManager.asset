@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DamageSprite
   - DopamineGauge
+  - StartMenu
   layers:
   - Default
   - TransparentFX

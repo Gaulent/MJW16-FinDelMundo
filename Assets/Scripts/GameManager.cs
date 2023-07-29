@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour, IGameManager
 // DEPRECTED: Difficulty By Time
 //    DateTime currentTime;
     ISpawnManager spawnManager;
-    [SerializeField] private float gameSpeed = 10f;
+    [SerializeField] private float maxGameSpeed = 10f;
+    private float gameSpeed = 0f;
     private bool canLowerHand = true;
     [SerializeField] private Sprite[] damageSprites;
     private int hitPoints = 0;
@@ -142,6 +143,7 @@ public class GameManager : MonoBehaviour, IGameManager
         dopamina = 100;
         //currentTime = System.DateTime.Now;
         InternalGameStatus(true);
+        gameSpeed = maxGameSpeed;
     }
 
     public void GameOver()
