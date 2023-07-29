@@ -933,6 +933,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1748776928}
     m_Modifications:
+    - target: {fileID: 1409121074212668375, guid: 42fd6113825ff834393912120876b318, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409121074212668375, guid: 42fd6113825ff834393912120876b318, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 2026058989939195489, guid: 42fd6113825ff834393912120876b318, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1118,7 +1126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2093716829}
   - component: {fileID: 2093716828}
-  - component: {fileID: 2093716827}
+  - component: {fileID: 2093716830}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1126,14 +1134,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &2093716827
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093716826}
-  m_Enabled: 1
 --- !u!20 &2093716828
 Camera:
   m_ObjectHideFlags: 0
@@ -1200,6 +1200,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1748776928}
   m_LocalEulerAnglesHint: {x: 5.27, y: 0, z: 0}
+--- !u!114 &2093716830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093716826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
