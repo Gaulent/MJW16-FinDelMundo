@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour, IGameManager
         damageSpriteRenderer = GameObject.FindWithTag("DamageSprite").GetComponent<SpriteRenderer>();
         dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
         dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
-        
+
         playerController.OnGameOverSignal.AddListener(this.GameOver);
         spawnManager.OnWaveEndedSignal.AddListener(WaveEnded);
         StartGame();
@@ -151,6 +151,7 @@ public class GameManager : MonoBehaviour, IGameManager
     {
         InternalGameStatus(false);
         gameSpeed = 0;
+        playerController.Disable();
 
     }
 

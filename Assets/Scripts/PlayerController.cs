@@ -100,4 +100,9 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         return isPhoneDown;
     }
+
+    public void Disable()
+    {
+        enabled = false;
+    }
 }
