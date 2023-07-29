@@ -13,14 +13,21 @@ public class GameManager : MonoBehaviour, IGameManager
     IPlayerController playerController;
     ISpawnManager spawnManager;
     [SerializeField] private float gameSpeed = 10f;
-    [SerializeField] private Text dopamineField;
     private bool canLowerHand = true;
+    [SerializeField] private Sprite[] damageSprites;
+    private int hitPoints = 0;
+    private SpriteRenderer damageSpriteRenderer;
+    private Slider dopamineGauge;
+    private Image dopamineBarGauge;
 
     public void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<IPlayerController>();
         spawnManager = GameObject.Find("SpawnManager").GetComponent<ISpawnManager>();
-
+        damageSpriteRenderer = GameObject.FindWithTag("DamageSprite").GetComponent<SpriteRenderer>();
+        dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
+        dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
+        
         playerController.OnGameOverSignal.AddListener(this.GameOver);
         StartGame();
     }
@@ -45,8 +52,12 @@ public class GameManager : MonoBehaviour, IGameManager
     }
 
     private void UpdateUI()
-    {   
-        dopamineField.text = dopamina.ToString();
+    {
+        dopamineGauge.value = dopamina / 100f;
+        if (canLowerHand)
+            dopamineBarGauge.color = Color.magenta;
+        else
+            dopamineBarGauge.color = Color.red;
     }
 
     private void HandleDopamine()
@@ -86,6 +97,8 @@ public class GameManager : MonoBehaviour, IGameManager
     public void GameOver()
     {
         InternalGameStatus(false);
+        gameSpeed = 0;
+
     }
 
     private void InternalGameStatus(bool status)
@@ -97,12 +110,24 @@ public class GameManager : MonoBehaviour, IGameManager
     */
 
       //playerController.EnableMovement(status);
-      spawnManager.SetSpawnStatus(status);
+        spawnManager.SetSpawnStatus(status);
     }
 
     public bool GetGameStatus()
     {
         return gameStatus;
+    }
+    
+    public void GetDamage()
+    {
+        hitPoints++;
+        damageSpriteRenderer.sprite = damageSprites[hitPoints];
+        if (hitPoints >= damageSprites.Length-1)
+        {
+            Debug.Log("TE MORISTE");
+            GameOver();
+        }
+
     }
 
 }

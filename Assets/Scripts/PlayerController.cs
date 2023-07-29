@@ -77,12 +77,27 @@ public class PlayerController : MonoBehaviour, IPlayerController
     }
 
 
-    void OnCollisionEnter(Collision collision)
+
+
+    private void OnTriggerEnter(Collider other)
     {
         soundManager.PlaySFX(ESFXType.BrokenGlass);
         //GameOverSignal.Invoke(); <--- TODO
+        
+        if (GetIsJumping())
+        {
+            Debug.Log("TriggerDetected, but jumping");
+        }
+        else
+        {
+            Debug.Log("TriggerDetected");
+        }
+
+        myGM.GetDamage();
     }
     
+
+
     public bool GetIsPhoneDown()
     {
         return isPhoneDown;

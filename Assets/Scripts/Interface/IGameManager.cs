@@ -4,4 +4,5 @@ public interface IGameManager
     bool GetGameStatus();
     float GetGameSpeed();
     bool CanLowerHand();
+    void GetDamage();
 }
