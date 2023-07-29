@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6416254178099293359}
   - component: {fileID: 5085899540848205656}
-  - component: {fileID: -6707083954378673145}
   - component: {fileID: -4415363478606649325}
+  - component: {fileID: -1919672482225098961}
   m_Layer: 0
   m_Name: ArbolGrande
   m_TagString: Untagged
@@ -86,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6707083954378673145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7310336185284393546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7c7306bff1fa845b8397e0fc77e9cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  backgroundMode: 1
 --- !u!210 &-4415363478606649325
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -112,3 +98,15 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_SortAtRoot: 0
+--- !u!114 &-1919672482225098961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7310336185284393546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604cdedf7274e7f49b92cbe73b5c2566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
