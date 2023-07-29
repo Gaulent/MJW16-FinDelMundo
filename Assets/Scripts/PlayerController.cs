@@ -84,16 +84,14 @@ public class PlayerController : MonoBehaviour, IPlayerController
         soundManager.PlaySFX(ESFXType.BrokenGlass);
         //GameOverSignal.Invoke(); <--- TODO
         
-        if (GetIsJumping())
+        if (other.gameObject.layer == LayerMask.NameToLayer("HighHazard"))
         {
-            Debug.Log("TriggerDetected, but jumping");
+            myGM.GetDamage();
         }
-        else
+        if (!GetIsJumping() && other.gameObject.layer == LayerMask.NameToLayer("LowHazard"))
         {
-            Debug.Log("TriggerDetected");
+            myGM.GetDamage();
         }
-
-        myGM.GetDamage();
     }
     
 
