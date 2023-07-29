@@ -20,6 +20,11 @@ public class ZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.z < -2)
+        {
+            Destroy(gameObject);
+        }
+
         if(backgroundMode)
         {
             transform.position += speed * Time.deltaTime * Vector3.back;

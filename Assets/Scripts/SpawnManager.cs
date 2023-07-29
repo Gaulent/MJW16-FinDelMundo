@@ -11,10 +11,10 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
 
     [SerializeField] private bool BackgroundMode;
 
-    [SerializeField] private int minX = 4;
-    [SerializeField] private int maxX = 5;
+    [SerializeField] private float minX = 3;
+    [SerializeField] private float maxX = 4;
 
-    private int enemiesSpawned, enemiesToSpawn;
+    private float enemiesSpawned, enemiesToSpawn;
 
     [SerializeField] List<GameObject> SpawnTypes;
 
@@ -31,7 +31,9 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
 
     private IPlayerController playerController;
 
-    private int[] tmp = new int[2];
+    private float[] tmp = new float[2];
+
+    private List<GameObject> lastSpawnedObject;
 
     // Start is called before the first frame update
     void Start()
@@ -56,13 +58,14 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
             tmp[1]= maxX;
 
             // Choose which side spawn, left or right
-            if (Random.Range(0,2) == 1)
+            if (Random.Range(0,2) >= 1)
             {
                 tmp[0]*=-1;
                 tmp[1]*=-1;
+                
             }
                 Instantiate(PrefabToSpawn, 
-                    new Vector3(Random.Range((float)minX, (float)maxX), 0, 40), 
+                    new Vector3(Random.Range((float)tmp[0], (float)tmp[1]), 0, 40), 
                     PrefabToSpawn.transform.rotation
                     );
             return;
