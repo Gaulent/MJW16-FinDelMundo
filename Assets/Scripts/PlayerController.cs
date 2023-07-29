@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private Rigidbody myRB;
     [SerializeField] private float jumpForce = 10f;
     private Animator handAnimator;
+    private bool isPhoneDown = false;
+    private IGameManager myGM;
 
     /*public void EnableMovement(bool movement)
     {
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         soundManager = GameObject.Find("SoundManager").GetComponent<ISoundManager>();
         myRB = GetComponent<Rigidbody>();
         handAnimator = GetComponentInChildren<Animator>();
+        myGM = FindObjectOfType<GameManager>();
     }
 
     void HandlePLayerMovement(float moveAmount)
@@ -49,11 +52,13 @@ public class PlayerController : MonoBehaviour, IPlayerController
             performJump = true;
             soundManager.PlaySFX(ESFXType.Jump);
         }
-        if (Input.GetButton("Fire1"))
+        
+        isPhoneDown = myGM.CanLowerHand() && Input.GetButton("Fire1");
+        
+        if(isPhoneDown) 
             handAnimator.SetBool("HandDown",true);
         else
             handAnimator.SetBool("HandDown",false);
-
     }
 
     private void FixedUpdate()
@@ -71,9 +76,15 @@ public class PlayerController : MonoBehaviour, IPlayerController
         
     }
 
+
     void OnCollisionEnter(Collision collision)
     {
         soundManager.PlaySFX(ESFXType.BrokenGlass);
         //GameOverSignal.Invoke(); <--- TODO
+    }
+    
+    public bool GetIsPhoneDown()
+    {
+        return isPhoneDown;
     }
 }

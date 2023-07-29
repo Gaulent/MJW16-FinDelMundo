@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour, IGameManager
     ISpawnManager spawnManager;
     [SerializeField] private float gameSpeed = 10f;
     [SerializeField] private Text dopamineField;
+    private bool canLowerHand = true;
 
     public void Start()
     {
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour, IGameManager
 
     private void HandleDopamine()
     {
-        if(dopamineStatusDepleting)
+        if(playerController.GetIsPhoneDown())
             dopamina -= dopamineDepleteRatio * Time.deltaTime;
         else
         {
@@ -60,16 +61,21 @@ public class GameManager : MonoBehaviour, IGameManager
         if (dopamina < 0)
         {
             dopamina = 0;
-            dopamineStatusDepleting = false;
+            canLowerHand = false;
+            //dopamineStatusDepleting = false;
         }
         if (dopamina > 100)
         {
             dopamina = 100;
-            dopamineStatusDepleting = true;
+            canLowerHand = true;
+            //dopamineStatusDepleting = true;
         }
     }
-    
-    
+
+    public bool CanLowerHand()
+    {
+        return canLowerHand;
+    }
 
     public void StartGame()
     {
