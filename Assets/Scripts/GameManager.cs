@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour, IGameManager
 {
     bool gameStatus = false;
-    int dopamina = 100;
+    private bool dopamineStatusDepleting = true;
+    float dopamina = 100;
+    [SerializeField] private float dopamineDepleteRatio = 2f;
+    [SerializeField] private float dopamineIncreaseRatio = 2f;
     IPlayerController playerController;
     ISpawnManager spawnManager;
     [SerializeField] private float gameSpeed = 10f;
+    [SerializeField] private Text dopamineField;
 
     public void Start()
     {
@@ -29,7 +34,39 @@ public class GameManager : MonoBehaviour, IGameManager
         {
             GameOver();
         }
+
+        HandleDopamine();
+        UpdateUI();
+
     }
+
+    private void UpdateUI()
+    {   
+        dopamineField.text = dopamina.ToString();
+    }
+
+    private void HandleDopamine()
+    {
+        if(dopamineStatusDepleting)
+            dopamina -= dopamineDepleteRatio * Time.deltaTime;
+        else
+        {
+            dopamina += dopamineIncreaseRatio * Time.deltaTime;            
+        }
+
+        if (dopamina < 0)
+        {
+            dopamina = 0;
+            dopamineStatusDepleting = false;
+        }
+        if (dopamina > 100)
+        {
+            dopamina = 100;
+            dopamineStatusDepleting = true;
+        }
+    }
+    
+    
 
     public void StartGame()
     {
@@ -49,7 +86,7 @@ public class GameManager : MonoBehaviour, IGameManager
         GameObject.Find("Player").GetComponent<IPlayerController>().EnableMovement(status);
         GameObject.Find("SpawnManager").GetComponent<ISpawnManager>().SetSpawnStatus(status);
     */
-      playerController.EnableMovement(status);
+      //playerController.EnableMovement(status);
       spawnManager.SetSpawnStatus(true);
 
     }

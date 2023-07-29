@@ -6,17 +6,17 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour, IPlayerController
 {
-    private bool movement;
+    //private bool movement; // Replaced by enableing and disabling scripts
     [SerializeField] private float rangeMovement = 3f;
     [SerializeField] private float speed = 1f;
     private bool performJump = false;
     private Rigidbody myRB;
     [SerializeField] private float jumpForce = 10f;
 
-    public void EnableMovement(bool movement)
+    /*public void EnableMovement(bool movement)
     {
         this.movement = movement;
-    }
+    }*/
 
     protected UnityEvent GameOverSignal = new UnityEvent();
 
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     // Start is called before the first frame update
     void Start()
     {
-        EnableMovement(true);
+        //EnableMovement(true);
         myRB = GetComponent<Rigidbody>();
     }
 

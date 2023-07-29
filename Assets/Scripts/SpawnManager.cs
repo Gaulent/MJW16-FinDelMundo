@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour, ISpawnManager
 {
-    public GameObject PrefabToSpawn;
+    //public GameObject PrefabToSpawn;
 
     public float startDelay = 2, repeatRate = 2;
 
@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnObstacule", startDelay, repeatRate);
+        //InvokeRepeating("SpawnObstacule", startDelay, repeatRate);
         playerController = GameObject.Find("Player")
             .GetComponent<IPlayerController>();;
     }
@@ -30,8 +30,9 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
             CancelInvoke("SpawnObstacule");return;
         }
 
+        GameObject PrefabToSpawn = SpawnTypes[Random.Range(0, SpawnTypes.Count)];
         Instantiate(SpawnTypes[Random.Range(0, SpawnTypes.Count)], 
-            new Vector3(Random.Range(-SpawnRange,SpawnRange),40 ,1), 
+            new Vector3(Random.Range(-SpawnRange,SpawnRange),0 ,40), 
             PrefabToSpawn.transform.rotation
         );
     }
