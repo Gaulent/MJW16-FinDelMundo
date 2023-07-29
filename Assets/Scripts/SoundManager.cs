@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour, ISoundManager
     // Start is called before the first frame update
     public bool PlaySFX(ESFXType sfxSound)
     {
-        FMOD.Studio.EventInstance heal = FMODUnity.RuntimeManager.CreateInstance(GetID(sfxSound));
+        FMOD.Studio.EventInstance heal = FMODUnity.RuntimeManager.CreateInstance("event:/"+GetID(sfxSound));
         //heal.setParameterByID(fullHealthParameterId, restoreAll ? 1.0f : 0.0f);
         heal.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
         heal.start();
