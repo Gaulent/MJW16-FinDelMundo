@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{318a3a67-f8a8-476b-862e-495951a5b2e7}">
+		<property name="assetPath">
+			<value>numbersandlettersandeverythingthatgoeswiththem/NUMBERS AND LETTERS AND EVERYTHING THAT GOES WITH THEM/prepositions with effect/out.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.88099773242630386</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>

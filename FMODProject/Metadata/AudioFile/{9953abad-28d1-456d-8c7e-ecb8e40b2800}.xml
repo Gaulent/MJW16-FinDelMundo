@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9953abad-28d1-456d-8c7e-ecb8e40b2800}">
+		<property name="assetPath">
+			<value>numbersandlettersandeverythingthatgoeswiththem/NUMBERS AND LETTERS AND EVERYTHING THAT GOES WITH THEM/weights and measures with effect/gallons.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.25</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>

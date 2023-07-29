@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{6a1578d6-6938-4ab0-bd52-fce5850d8d6d}">
+		<property name="assetPath">
+			<value>explosionsoundfxvolume1/TomWinandySF_Explosion/TomWinandySFX_Explosions Volume I_DistantExplosion_20.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.2109070294784576</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>

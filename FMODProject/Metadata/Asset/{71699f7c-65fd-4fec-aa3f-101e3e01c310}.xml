@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{71699f7c-65fd-4fec-aa3f-101e3e01c310}">
+		<property name="assetPath">
+			<value>animecomedysoundeffectpack/Anime Comedy Sound Effect Pack/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>

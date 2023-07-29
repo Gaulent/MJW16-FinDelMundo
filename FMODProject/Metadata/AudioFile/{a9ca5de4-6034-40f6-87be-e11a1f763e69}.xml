@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a9ca5de4-6034-40f6-87be-e11a1f763e69}">
+		<property name="assetPath">
+			<value>userinterfacesoundfxscifitech/TomWinandySFX_UI_ScifiTech_Button-Select_29.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.24043083900226758</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>

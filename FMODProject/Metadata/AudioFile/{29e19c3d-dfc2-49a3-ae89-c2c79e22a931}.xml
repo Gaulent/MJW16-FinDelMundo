@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{29e19c3d-dfc2-49a3-ae89-c2c79e22a931}">
+		<property name="assetPath">
+			<value>animecomedysoundeffectpack/Anime Comedy Sound Effect Pack/Whooshes Swishes Slides Transitions/AC_Windy_Digital_Whoosh_03v1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.7413333333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>

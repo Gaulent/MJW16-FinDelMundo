@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{df2a2c60-50fe-4320-aadf-ebe7c3af2bcf}">
+		<property name="assetPath">
+			<value>numbersandlettersandeverythingthatgoeswiththem/NUMBERS AND LETTERS AND EVERYTHING THAT GOES WITH THEM/money with effect/yuan (chinese).wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.0349886621315192</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>

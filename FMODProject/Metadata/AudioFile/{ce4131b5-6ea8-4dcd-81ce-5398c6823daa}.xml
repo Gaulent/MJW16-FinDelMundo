@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ce4131b5-6ea8-4dcd-81ce-5398c6823daa}">
+		<property name="assetPath">
+			<value>numbersandlettersandeverythingthatgoeswiththem/NUMBERS AND LETTERS AND EVERYTHING THAT GOES WITH THEM/time with effect/century.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.2277551020408164</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>

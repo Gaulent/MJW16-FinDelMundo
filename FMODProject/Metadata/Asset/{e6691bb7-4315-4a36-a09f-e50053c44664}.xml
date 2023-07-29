@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{e6691bb7-4315-4a36-a09f-e50053c44664}">
+		<property name="assetPath">
+			<value>numbersandlettersandeverythingthatgoeswiththem/NUMBERS AND LETTERS AND EVERYTHING THAT GOES WITH THEM/weights and measures no effect/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>
