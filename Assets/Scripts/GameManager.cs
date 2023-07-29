@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,24 @@ public class GameManager : MonoBehaviour, IGameManager
     [SerializeField] private float dopamineDepleteRatio = 2f;
     [SerializeField] private float dopamineIncreaseRatio = 2f;
     IPlayerController playerController;
+
+// DEPRECTED: Difficulty By Time
+//    DateTime currentTime;
     ISpawnManager spawnManager;
     [SerializeField] private float gameSpeed = 10f;
     [SerializeField] private Text dopamineField;
     private bool canLowerHand = true;
+
+    [SerializeField] private List<int> EnemiesByWaves;
+
+    //[SerializeField] private Dictionary<EDifficultyWaves,int> EnemiesByWaves;
+    // Failed...s
+    //[SerializeField] public Dictionary<EDifficultyWaves,List<GameObject>> WaveList;
+    [SerializeField] List<GameObject> Wave1List;
+    [SerializeField] List<GameObject> Wave2List;
+    [SerializeField] List<GameObject> Wave3List;
+    
+    EDifficultyWaves currentDifficultyWave;
 
     public void Start()
     {
@@ -22,7 +37,34 @@ public class GameManager : MonoBehaviour, IGameManager
         spawnManager = GameObject.Find("SpawnManager").GetComponent<ISpawnManager>();
 
         playerController.OnGameOverSignal.AddListener(this.GameOver);
+        spawnManager.OnWaveEndedSignal.AddListener(WaveEnded);
         StartGame();
+    }
+
+    private void WaveEnded()
+    {
+        currentDifficultyWave++;
+        if ((int)currentDifficultyWave >= Enum.GetNames(typeof(EDifficultyWaves)).Length)
+        {
+            /// TODO Make call
+        }
+
+        spawnManager.SetEnemiesWaves(
+            GetEnemiesObjectList(currentDifficultyWave), 
+            EnemiesByWaves[(int)currentDifficultyWave]
+            );
+
+    }
+
+    public List<GameObject> GetEnemiesObjectList(EDifficultyWaves difficultyWaves)
+    {
+        switch(difficultyWaves)
+        {
+            case EDifficultyWaves.Wave1: return Wave1List;
+            case EDifficultyWaves.Wave2: return Wave2List;
+            case EDifficultyWaves.Wave3: return Wave3List;
+        }
+        return new List<GameObject>();
     }
 
     public float GetGameSpeed()
@@ -49,6 +91,13 @@ public class GameManager : MonoBehaviour, IGameManager
         dopamineField.text = dopamina.ToString();
     }
 
+/*
+    private void getInternalTime()
+    {
+        return DateTime.Now - currentTime;
+    }
+
+*/
     private void HandleDopamine()
     {
         if(playerController.GetIsPhoneDown())
@@ -80,6 +129,7 @@ public class GameManager : MonoBehaviour, IGameManager
     public void StartGame()
     {
         dopamina = 100;
+        //currentTime = System.DateTime.Now;
         InternalGameStatus(true);
     }
 

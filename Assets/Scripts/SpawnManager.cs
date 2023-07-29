@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SpawnManager : MonoBehaviour, ISpawnManager
 {
@@ -8,9 +9,17 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
 
     public float startDelay = 2, repeatRate = 2;
 
+    private int enemiesSpawned, enemiesToSpawn;
+
     [SerializeField] List<GameObject> SpawnTypes;
 
     [SerializeField] private int SpawnRange = 20;
+
+    protected UnityEvent WaveEndedSignal = new UnityEvent();
+
+    public UnityEvent OnWaveEndedSignal { get { return WaveEndedSignal; } }
+
+
     bool IsActiveTheGame;
 
     private IPlayerController playerController;
@@ -20,7 +29,7 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
     {
         //InvokeRepeating("SpawnObstacule", startDelay, repeatRate);
         playerController = GameObject.Find("Player")
-            .GetComponent<IPlayerController>();;
+            .GetComponent<IPlayerController>();
     }
 
     void SpawnObstacule()
@@ -35,11 +44,21 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
             new Vector3(Random.Range(-SpawnRange,SpawnRange),0 ,40), 
             PrefabToSpawn.transform.rotation
         );
+
+        enemiesSpawned++;
+        if (enemiesSpawned == enemiesToSpawn){ WaveEndedSignal.Invoke();}
     }
 
     public void SetSpawnStatus(bool status)
     {
         if (status){InvokeRepeating("SpawnObstacule", startDelay, repeatRate); }
         this.IsActiveTheGame = status;
+    }
+
+    public void SetEnemiesWaves(List<GameObject> test, int values)
+    {
+        SpawnTypes = test;
+        enemiesToSpawn = values;
+        enemiesSpawned = 0;
     }
 }
