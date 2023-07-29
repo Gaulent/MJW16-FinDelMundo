@@ -5,7 +5,6 @@ using UnityEngine;
 public class ZombieMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
-    [SerializeField] private bool backgroundMode;
     private SpriteRenderer mySR;
 
     // Start is called before the first frame update
@@ -23,12 +22,6 @@ public class ZombieMovement : MonoBehaviour
         if (transform.position.z < -2)
         {
             Destroy(gameObject);
-        }
-
-        if(backgroundMode)
-        {
-            transform.position += speed * Time.deltaTime * Vector3.back;
-            return;
         }
 
         if(mySR.flipX)
