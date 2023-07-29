@@ -6,6 +6,9 @@ using FMODUnity;
 
 public class SoundManager : MonoBehaviour, ISoundManager
 {
+    private EventInstance audioVideo;
+    private PLAYBACK_STATE status;
+
     // Start is called before the first frame update
     public bool PlaySFX(ESFXType sfxSound, GameObject originSound)
     {
@@ -18,11 +21,17 @@ public class SoundManager : MonoBehaviour, ISoundManager
 
     public bool PlayAudioFromVideo(string filename, GameObject originSound)
     {
-        EventInstance heal = RuntimeManager.CreateInstance("event:/"+filename.Split(".")[0]);
+        audioVideo.getPlaybackState(out status);
+        if(status == PLAYBACK_STATE.PLAYING)
+        {
+            audioVideo.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
+        
+        audioVideo = RuntimeManager.CreateInstance("event:/"+filename.Split(".")[0]);
         //heal.setParameterByID(fullHealthParameterId, restoreAll ? 1.0f : 0.0f);
-        heal.set3DAttributes(RuntimeUtils.To3DAttributes(originSound));
-        heal.start();
-        return heal.release().HasFlag(FMOD.RESULT.OK);
+        audioVideo.set3DAttributes(RuntimeUtils.To3DAttributes(originSound));
+        audioVideo.start();
+        return audioVideo.release().HasFlag(FMOD.RESULT.OK);
 
     }
 
