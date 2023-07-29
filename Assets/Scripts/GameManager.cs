@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour, IGameManager
     int dopamina = 100;
     IPlayerController playerController;
     ISpawnManager spawnManager;
+    [SerializeField] private float gameSpeed = 10f;
 
     public void Start()
     {
@@ -15,6 +16,11 @@ public class GameManager : MonoBehaviour, IGameManager
         spawnManager = GameObject.Find("SpawnManager").GetComponent<ISpawnManager>();
 
         playerController.OnGameOverSignal.AddListener(this.GameOver);
+    }
+
+    public float GetGameSpeed()
+    {
+        return gameSpeed;
     }
 
     public void Update()

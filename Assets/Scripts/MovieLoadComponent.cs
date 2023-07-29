@@ -5,18 +5,20 @@ using UnityEngine.Video;
 public class MovieLoad : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] List<string> list = new List<string>(){"example1.mp4","example2_reformat.mp4","example3.mp4"};;
-
+    bool isStillShown = false;
+    [SerializeField] List<string> list;
     UnityEngine.Video.VideoPlayer videoPlayer;
     void Start()
-    {  
-            TriggerVideo();
+    {
+        videoPlayer = this.gameObject.AddComponent<UnityEngine.Video.VideoPlayer>();
+        //list = new List<string>() { "example1.mp4", "example2_reformat.mp4" };
+        TriggerVideo();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void TriggerVideo()
@@ -51,7 +53,7 @@ public class MovieLoad : MonoBehaviour
 
     string GetUrl()
     {
-        return Application.streamingAssetsPath + "/"+list[Random.Range(0,list.Count)];
+        return Application.streamingAssetsPath + "/" + list[Random.Range(0, list.Count)];
     }
 
     void EndReached(UnityEngine.Video.VideoPlayer vp)

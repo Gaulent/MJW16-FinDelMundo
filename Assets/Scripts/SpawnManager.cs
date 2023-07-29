@@ -13,14 +13,14 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
     [SerializeField] private int SpawnRange = 20;
     bool IsActiveTheGame;
 
-    private PlayerController playerController;
+    private IPlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("SpawnObstacule", startDelay, repeatRate);
         playerController = GameObject.Find("Player")
-            .GetComponent<PlayerController>();;
+            .GetComponent<IPlayerController>();;
     }
 
     void SpawnObstacule()
