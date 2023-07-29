@@ -830,12 +830,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff67efde29a58141aaf7fbf85b5d72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 2
-  repeatRate: 2
-  BackgroundMode: 0
+  startDelay: 0
+  repeatRate: 0.7
+  BackgroundMode: 1
   minX: 4
   maxX: 5
-  SpawnTypes: []
+  SpawnTypes:
+  - {fileID: 7310336185284393546, guid: acab154ac3616f443a8f5def957a8799, type: 3}
+  - {fileID: 4063426619411279901, guid: 735607a676eec8a419ac52cdf2d8736f, type: 3}
+  - {fileID: 8662697745877560882, guid: 3dd3d4af05d0df44898852e6f7f60692, type: 3}
   SpawnRange: 20
 --- !u!1 &1268204836
 GameObject:
