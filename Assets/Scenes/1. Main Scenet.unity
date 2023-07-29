@@ -2077,10 +2077,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1748776928}
     m_Modifications:
-    - target: {fileID: 339136631946621384, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 590902055769606822, guid: 42fd6113825ff834393912120876b318, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2121,58 +2117,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3390621444110507513, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281367562108266271, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: list.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281367562108266271, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: list.Array.data[0]
-      value: alma.mov
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281367562108266271, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: list.Array.data[1]
-      value: chaval.mov
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281367562108266271, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: list.Array.data[2]
-      value: chiquita.mov
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281367562108266271, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: list.Array.data[3]
-      value: memes.mov
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281367562108266271, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: list.Array.data[4]
-      value: noe.mov
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281367562108266271, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: list.Array.data[5]
-      value: nnutria.mov
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281367562108266271, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: list.Array.data[6]
-      value: tequila.mov
-      objectReference: {fileID: 0}
-    - target: {fileID: 5281367562108266271, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: list.Array.data[7]
-      value: vero.mov
-      objectReference: {fileID: 0}
-    - target: {fileID: 7573702638525662142, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: m_Name
-      value: Dedo 1 mj
-      objectReference: {fileID: 0}
     - target: {fileID: 7776816037312571340, guid: 42fd6113825ff834393912120876b318, type: 3}
       propertyPath: m_Name
       value: Hand
       objectReference: {fileID: 0}
-    - target: {fileID: 8521960457435408884, guid: 42fd6113825ff834393912120876b318, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 775fa70756a90414b904c51f55577d5b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

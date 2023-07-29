@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// DEPRECATED
+
 public class StickManager : MonoBehaviour,IStickManager
 {
     bool activated = false;
