@@ -61,6 +61,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     void OnCollisionEnter(Collision collision)
     {
-        GameOverSignal.Invoke();
+        //GameOverSignal.Invoke(); <--- TODO
     }
 }
