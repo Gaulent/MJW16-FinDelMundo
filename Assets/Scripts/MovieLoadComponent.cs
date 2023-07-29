@@ -12,7 +12,7 @@ public class MovieLoad : MonoBehaviour
     UnityEngine.Video.VideoPlayer videoPlayer;
     void Start()
     {
-        GameObject.Find("SoundManager").GetComponent<ISoundManager>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<ISoundManager>();
         videoPlayer = this.gameObject.AddComponent<UnityEngine.Video.VideoPlayer>();
                 // Play on awake defaults to true. Set it to false to avoid the url set
         // below to auto-start playback since we're in Start().

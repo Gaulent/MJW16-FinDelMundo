@@ -18,7 +18,7 @@ public class SoundManager : MonoBehaviour, ISoundManager
 
     public bool PlayAudioFromVideo(string filename, GameObject originSound)
     {
-        EventInstance heal = RuntimeManager.CreateInstance("event:/"+filename);
+        EventInstance heal = RuntimeManager.CreateInstance("event:/"+filename.Split(".")[0]);
         //heal.setParameterByID(fullHealthParameterId, restoreAll ? 1.0f : 0.0f);
         heal.set3DAttributes(RuntimeUtils.To3DAttributes(originSound));
         heal.start();
