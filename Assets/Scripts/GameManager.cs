@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour, IGameManager
 {
     bool gameStatus = false;
-    private bool dopamineStatusDepleting = true;
     float dopamina = 100;
     [SerializeField] private float dopamineDepleteRatio = 2f;
     [SerializeField] private float dopamineIncreaseRatio = 2f;
@@ -179,7 +178,7 @@ public class GameManager : MonoBehaviour, IGameManager
         damageSpriteRenderer.sprite = damageSprites[hitPoints];
         if (hitPoints >= damageSprites.Length-1)
         {
-            Debug.Log("TE MORISTE");
+            Debug.Log("TE MORISTE! GAME OVER");
             GameOver();
         }
 
