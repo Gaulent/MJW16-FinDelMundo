@@ -21,18 +21,35 @@ public class SoundManager : MonoBehaviour, ISoundManager
 
     public bool PlayAudioFromVideo(string filename, GameObject originSound)
     {
-        audioVideo.getPlaybackState(out status);
-        if(status == PLAYBACK_STATE.PLAYING)
+        //Debug.Log("Calling with file:"+ filename);
+        if (!StopAudioFromVideo())
         {
-            audioVideo.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            Debug.Log("FAILED To Stop");
         }
-        
+
         audioVideo = RuntimeManager.CreateInstance("event:/"+filename.Split(".")[0]);
         //heal.setParameterByID(fullHealthParameterId, restoreAll ? 1.0f : 0.0f);
         audioVideo.set3DAttributes(RuntimeUtils.To3DAttributes(originSound));
         audioVideo.start();
         return audioVideo.release().HasFlag(FMOD.RESULT.OK);
 
+    }
+
+        public bool StopAudioFromVideo()
+        {
+        audioVideo.getPlaybackState(out status);
+        switch(status)
+        {
+            case PLAYBACK_STATE.STARTING:
+            case PLAYBACK_STATE.PLAYING:
+            case PLAYBACK_STATE.SUSTAINING: 
+                audioVideo.stop(FMOD.Studio.STOP_MODE.IMMEDIATE); 
+            //    Debug.Log("It's playing a audio video, Force Stopping ");
+            break;
+            default: break;
+        }
+        
+        return status == PLAYBACK_STATE.STOPPED || status == PLAYBACK_STATE.STOPPED;
     }
 
     public bool PlaySFX(ESFXType sfxSound)
