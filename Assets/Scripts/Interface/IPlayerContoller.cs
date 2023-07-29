@@ -5,4 +5,5 @@ public interface IPlayerController{
   //void EnableMovement(bool movement);
   bool GetIsJumping();
   bool GetIsPhoneDown();
+  void Disable();
 }

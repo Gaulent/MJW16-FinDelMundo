@@ -9,9 +9,16 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
 
     public float startDelay = 2, repeatRate = 2;
 
-    private int enemiesSpawned, enemiesToSpawn;
+    [SerializeField] private bool BackgroundMode;
+
+    [SerializeField] private float minX = 3;
+    [SerializeField] private float maxX = 4;
+
+    private float enemiesSpawned, enemiesToSpawn;
 
     [SerializeField] List<GameObject> SpawnTypes;
+
+//    [SerializeField] List<int> LocationSpawns = new List<int>(){-4,};
 
     [SerializeField] private int SpawnRange = 20;
 
@@ -23,6 +30,10 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
     bool IsActiveTheGame;
 
     private IPlayerController playerController;
+
+    private float[] tmp = new float[2];
+
+    private List<GameObject> lastSpawnedObject;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +51,26 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
         }
 
         GameObject PrefabToSpawn = SpawnTypes[Random.Range(0, SpawnTypes.Count)];
+        
+        if (BackgroundMode)
+        {
+            tmp[0]= minX;
+            tmp[1]= maxX;
+
+            // Choose which side spawn, left or right
+            if (Random.Range(0,2) >= 1)
+            {
+                tmp[0]*=-1;
+                tmp[1]*=-1;
+                
+            }
+                Instantiate(PrefabToSpawn, 
+                    new Vector3(Random.Range((float)tmp[0], (float)tmp[1]), 0, 40), 
+                    PrefabToSpawn.transform.rotation
+                    );
+            return;
+        }
+
         Instantiate(PrefabToSpawn, 
             new Vector3(Random.Range(-SpawnRange,SpawnRange),0 ,40), 
             PrefabToSpawn.transform.rotation

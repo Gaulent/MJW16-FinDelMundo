@@ -2,12 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour, IGameManager
 {
     bool gameStatus = false;
-    private bool dopamineStatusDepleting = true;
     float dopamina = 100;
     [SerializeField] private float dopamineDepleteRatio = 2f;
     [SerializeField] private float dopamineIncreaseRatio = 2f;
@@ -16,13 +16,16 @@ public class GameManager : MonoBehaviour, IGameManager
 // DEPRECTED: Difficulty By Time
 //    DateTime currentTime;
     ISpawnManager spawnManager;
-    [SerializeField] private float gameSpeed = 10f;
+    [SerializeField] private float maxGameSpeed = 10f;
+    private float gameSpeed = 0f;
+    ISpawnManager backgroundSpawnManager;
     private bool canLowerHand = true;
     [SerializeField] private Sprite[] damageSprites;
     private int hitPoints = 0;
     private SpriteRenderer damageSpriteRenderer;
     private Slider dopamineGauge;
     private Image dopamineBarGauge;
+    [SerializeField] private GameObject gameOverCanvas;
 
     [SerializeField] private List<int> EnemiesByWaves;
 
@@ -39,10 +42,11 @@ public class GameManager : MonoBehaviour, IGameManager
     {
         playerController = GameObject.Find("Player").GetComponent<IPlayerController>();
         spawnManager = GameObject.Find("SpawnManager").GetComponent<ISpawnManager>();
+        backgroundSpawnManager = GameObject.Find("BackgroundSpawnManager").GetComponent<ISpawnManager>();
         damageSpriteRenderer = GameObject.FindWithTag("DamageSprite").GetComponent<SpriteRenderer>();
         dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
         dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
-        
+
         playerController.OnGameOverSignal.AddListener(this.GameOver);
         spawnManager.OnWaveEndedSignal.AddListener(WaveEnded);
         StartGame();
@@ -142,13 +146,19 @@ public class GameManager : MonoBehaviour, IGameManager
         dopamina = 100;
         //currentTime = System.DateTime.Now;
         InternalGameStatus(true);
+        gameSpeed = maxGameSpeed;
     }
 
     public void GameOver()
     {
         InternalGameStatus(false);
         gameSpeed = 0;
-
+        playerController.Disable();
+        gameOverCanvas.SetActive(true);
+        
+        EventSystem es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        es.SetSelectedGameObject(null);
+        es.SetSelectedGameObject(es.firstSelectedGameObject);
     }
 
     private void InternalGameStatus(bool status)
@@ -161,6 +171,7 @@ public class GameManager : MonoBehaviour, IGameManager
 
       //playerController.EnableMovement(status);
         spawnManager.SetSpawnStatus(status);
+        backgroundSpawnManager.SetSpawnStatus(status);
     }
 
     public bool GetGameStatus()
@@ -174,7 +185,7 @@ public class GameManager : MonoBehaviour, IGameManager
         damageSpriteRenderer.sprite = damageSprites[hitPoints];
         if (hitPoints >= damageSprites.Length-1)
         {
-            Debug.Log("TE MORISTE");
+            Debug.Log("TE MORISTE! GAME OVER");
             GameOver();
         }
 

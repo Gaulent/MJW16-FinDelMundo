@@ -35,7 +35,7 @@ public class StickManager : MonoBehaviour,IStickManager
             movieLoadComponent.TriggerVideo();
             return;
         }
-        Debug.Log("I am here");
+        
         turnUpComponent.ClosingMobile();
         movieLoadComponent.StopVideo();
         return;

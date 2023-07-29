@@ -16,6 +16,16 @@ public class SoundManager : MonoBehaviour, ISoundManager
         return heal.release().HasFlag(FMOD.RESULT.OK);
     }
 
+    public bool PlayAudioFromVideo(string filename, GameObject originSound)
+    {
+        EventInstance heal = RuntimeManager.CreateInstance("event:/"+filename.Split(".")[0]);
+        //heal.setParameterByID(fullHealthParameterId, restoreAll ? 1.0f : 0.0f);
+        heal.set3DAttributes(RuntimeUtils.To3DAttributes(originSound));
+        heal.start();
+        return heal.release().HasFlag(FMOD.RESULT.OK);
+
+    }
+
     public bool PlaySFX(ESFXType sfxSound)
     {
         return PlaySFX(sfxSound, this.gameObject);
