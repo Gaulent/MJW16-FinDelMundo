@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour, ISpawnManager
         }
 
         GameObject PrefabToSpawn = SpawnTypes[Random.Range(0, SpawnTypes.Count)];
-        Instantiate(SpawnTypes[Random.Range(0, SpawnTypes.Count)], 
+        Instantiate(PrefabToSpawn, 
             new Vector3(Random.Range(-SpawnRange,SpawnRange),0 ,40), 
             PrefabToSpawn.transform.rotation
         );

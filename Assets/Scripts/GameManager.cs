@@ -30,10 +30,12 @@ public class GameManager : MonoBehaviour, IGameManager
 
     public void Update()
     {
+        /*
         if (dopamina < 0)
         {
             GameOver();
         }
+        */
 
         HandleDopamine();
         UpdateUI();
