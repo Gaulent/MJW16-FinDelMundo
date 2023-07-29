@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{6729b33b-c236-44ee-9376-1dcb8ec4ddb2}">
+		<property name="assetPath">
+			<value>animecomedysoundeffectpack/Anime Comedy Sound Effect Pack/.DS_Store</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{a5019177-510c-4347-899b-5f25c051456f}">
+		<property name="assetPath">
+			<value>epicorchestralactionmusicpack/EpicOrchestraCollectionMusicPack/Fighting The Boss/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>

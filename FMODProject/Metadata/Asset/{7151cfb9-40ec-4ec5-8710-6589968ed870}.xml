@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{7151cfb9-40ec-4ec5-8710-6589968ed870}">
+		<property name="assetPath">
+			<value>epicorchestralactionmusicpack/EpicOrchestraCollectionMusicPack/Desert Maneuvers/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
+		</relationship>
+	</object>
+</objects>
