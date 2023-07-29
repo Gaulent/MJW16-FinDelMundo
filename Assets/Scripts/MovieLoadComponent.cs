@@ -52,6 +52,9 @@ public class MovieLoad : MonoBehaviour
     public void StopVideo()
     {
         isStillShown = false;
+        videoPlayer.Stop();
+        // Maybe?? 
+        Destroy(videoPlayer);
     }
 
     public void TriggerVideo()
