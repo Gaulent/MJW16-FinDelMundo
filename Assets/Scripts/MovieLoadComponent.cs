@@ -6,62 +6,12 @@ public class MovieLoad : MonoBehaviour
 {
     // Start is called before the first frame update
     bool isStillShown = false;
-    bool isRotanding = false;
-    [SerializeField] float rotatorSpeed = 5f;
     [SerializeField] List<string> list;
     UnityEngine.Video.VideoPlayer videoPlayer;
     void Start()
     {
         videoPlayer = this.gameObject.AddComponent<UnityEngine.Video.VideoPlayer>();
-        //list = new List<string>() { "example1.mp4", "example2_reformat.mp4" };
-        
-        TriggerVideo();
-        OpeningMobile();
-    }
-
-    private void OpeningMobile()
-    {
-            StartCoroutine(RotatorEngine(0.5f));
-        
-    }
-
-    
-    private void ClosingMobile()
-    {
-        StartCoroutine(RotatorEngine(0));
-    }
-
-    IEnumerator RotatorEngine( float targetRotator )
-    {
-        if (isRotanding){yield return null;}
-        isRotanding = true;
-        while(transform.rotation.x <= targetRotator)
-        {
-            
-            yield return new WaitForSeconds(0.1f);
-            transform.rotation = 
-                Quaternion.Lerp(transform.rotation, 
-                    new Quaternion(
-                            targetRotator ,
-                            transform.rotation.y,
-                            transform.rotation.z, 
-                            transform.rotation.w),
-                            rotatorSpeed * Time.deltaTime
-                        );
-        }
-        isRotanding = false;
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void TriggerVideo()
-    {
-        // Play on awake defaults to true. Set it to false to avoid the url set
+                // Play on awake defaults to true. Set it to false to avoid the url set
         // below to auto-start playback since we're in Start().
         videoPlayer.playOnAwake = false;
 
@@ -85,22 +35,39 @@ public class MovieLoad : MonoBehaviour
         // Each time we reach the end, we slow down the playback by a factor of 10.
         videoPlayer.loopPointReached += EndReached;
 
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void StopVideo()
+    {
+        isStillShown = false;
+    }
+
+    public void TriggerVideo()
+    {
         // Start playback. This means the VideoPlayer may have to prepare (reserve
         // resources, pre-load a few frames, etc.). To better control the delays
         // associated with this preparation one can use videoPlayer.Prepare() along with
         // its prepareCompleted event.
+        isStillShown = true;
         videoPlayer.Play();
+    }
+
+    private void EndReached(UnityEngine.Video.VideoPlayer vp)
+    {
+        if (!isStillShown){vp.Stop();}
+        vp.url = GetUrl();
+        vp.Play();
+        // vp.playbackSpeed = vp.playbackSpeed / 10.0F;
     }
 
     string GetUrl()
     {
         return Application.streamingAssetsPath + "/" + list[Random.Range(0, list.Count)];
-    }
-
-    void EndReached(UnityEngine.Video.VideoPlayer vp)
-    {
-        vp.url = GetUrl();
-        vp.Play();
-        // vp.playbackSpeed = vp.playbackSpeed / 10.0F;
     }
 }
