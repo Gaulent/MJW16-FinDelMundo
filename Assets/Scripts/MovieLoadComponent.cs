@@ -28,7 +28,7 @@ public class MovieLoad : MonoBehaviour
         // Set the video to play. URL supports local absolute or relative paths.
         // Here, using absolute.
 
-        videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.None;
 
         videoPlayer.url = GetUrl();
 
