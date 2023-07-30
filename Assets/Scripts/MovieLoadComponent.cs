@@ -8,6 +8,7 @@ public class MovieLoad : MonoBehaviour
     bool isStillShown = false;
     ISoundManager soundManager;
     string currentFileLoaded = "";
+    string previousFileLoaded = "";
     [SerializeField] List<string> list;
     UnityEngine.Video.VideoPlayer videoPlayer;
     void Start()
@@ -83,7 +84,10 @@ public class MovieLoad : MonoBehaviour
 
     string GetUrl()
     {
-        currentFileLoaded = list[Random.Range(0, list.Count)];
+        previousFileLoaded = currentFileLoaded;
+        do{
+            currentFileLoaded = list[Random.Range(0, list.Count)];
+        }while(previousFileLoaded == currentFileLoaded);    
         return Application.streamingAssetsPath + "/" + currentFileLoaded;
     }
 }
