@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour, IGameManager
     [SerializeField] private Sprite[] damageSprites;
     private int hitPoints = 0;
     private SpriteRenderer damageSpriteRenderer;
+    private Image dopamineSpriteRenderer;
+    [SerializeField] private Sprite[] dopamineSprites;
     private Slider dopamineGauge;
     private Image dopamineBarGauge;
     [SerializeField] private GameObject gameOverCanvas;
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour, IGameManager
         spawnManager = GameObject.Find("SpawnManager").GetComponent<ISpawnManager>();
         backgroundSpawnManager = GameObject.Find("BackgroundSpawnManager").GetComponent<ISpawnManager>();
         powerUpSpawnManager = GameObject.Find("PowerUpSpawnManager").GetComponent<ISpawnManager>();
+        dopamineSpriteRenderer = GameObject.Find("Dopamine Background").GetComponent<Image>();
         damageSpriteRenderer = GameObject.FindWithTag("DamageSprite").GetComponent<SpriteRenderer>();
         dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
         dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
@@ -104,9 +107,14 @@ public class GameManager : MonoBehaviour, IGameManager
     {
         dopamineGauge.value = dopamina / 100f;
         if (canLowerHand)
+        {
             dopamineBarGauge.color = Color.magenta;
-        else
+            dopamineSpriteRenderer.sprite = dopamineSprites[0];
+        }
+        else{
             dopamineBarGauge.color = Color.red;
+            dopamineSpriteRenderer.sprite = dopamineSprites[1];
+            }
     }
 
 /*
