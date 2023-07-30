@@ -1262,7 +1262,9 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: 2928423235780051504, guid: 834fb84014079f6409be9523381e80d0, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 4bdc39f120ca9f540b98ff92b0f6bc28: {fileID: 543298035}
@@ -1571,7 +1573,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.8
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
