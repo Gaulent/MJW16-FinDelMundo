@@ -7,11 +7,12 @@ TagManager:
   - DamageSprite
   - DopamineGauge
   - StartMenu
+  - HurtEffect
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PostProcess
   - Water
   - UI
   - LowHazard
