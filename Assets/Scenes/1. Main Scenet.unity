@@ -461,7 +461,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 89fa1e2de6f62ca489888000a4265339, type: 3}
   dopamineSprites:
   - {fileID: 21300000, guid: 96996924df7c540498e34be30784724b, type: 3}
-  - {fileID: 21300000, guid: 041e4dcc63fc97946ad81b24f46ab737, type: 3}
+  - {fileID: 21300000, guid: 4ae84c9be6e40a44c949434ffb0b7ee0, type: 3}
   gameOverCanvas: {fileID: 1292897996}
   EnemiesByWaves: 
   Wave1List: []
