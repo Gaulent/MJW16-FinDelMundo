@@ -449,9 +449,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec564f23f3dacf545a5b1c287c312c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dopamineDepleteRatio: 50
+  dopamineDepleteRatio: 60
   dopamineIncreaseRatio: 20
-  maxGameSpeed: 15
+  maxGameSpeed: 12
   damageSprites:
   - {fileID: 0}
   - {fileID: 21300000, guid: e35105e722ce4d847b4b0dfd756805cf, type: 3}
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 0
-  repeatRate: 1
+  repeatRate: 0.4
   BackgroundMode: 0
   minX: 4
   maxX: 5
@@ -1041,7 +1041,7 @@ MonoBehaviour:
   - {fileID: 3512263104645895271, guid: c21af3fa920b526498cdb1db1ee04d49, type: 3}
   - {fileID: 1470226260408958988, guid: a883487ab4ad9b3479b87671d79714b9, type: 3}
   - {fileID: 1470226260408958988, guid: 42fb2b1906adf454490aa9f1c076cd02, type: 3}
-  SpawnRange: 3.5
+  SpawnRange: 6.5
 --- !u!1 &1225647143
 GameObject:
   m_ObjectHideFlags: 0
