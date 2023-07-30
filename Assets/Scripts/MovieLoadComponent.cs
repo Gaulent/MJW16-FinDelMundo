@@ -87,7 +87,7 @@ public class MovieLoad : MonoBehaviour
         previousFileLoaded = currentFileLoaded;
         do{
             currentFileLoaded = list[Random.Range(0, list.Count)];
-        }while(previousFileLoaded == currentFileLoaded);    
+        }while(previousFileLoaded == currentFileLoaded);
         return Application.streamingAssetsPath + "/" + currentFileLoaded;
     }
 }
