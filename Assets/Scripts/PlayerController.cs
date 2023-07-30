@@ -86,16 +86,20 @@ public class PlayerController : MonoBehaviour, IPlayerController
         
         if (other.gameObject.layer == LayerMask.NameToLayer("HighHazard"))
         {
-            myGM.GetDamage();
-            soundManager.PlaySFX(ESFXType.BrokenGlass);
+            GetHurt();
         }
         if (!GetIsJumping() && other.gameObject.layer == LayerMask.NameToLayer("LowHazard"))
         {
-            myGM.GetDamage();
-            soundManager.PlaySFX(ESFXType.BrokenGlass);
+            GetHurt();
         }
     }
-    
+
+    private void GetHurt()
+    {
+        myGM.GetDamage();
+        soundManager.PlaySFX(ESFXType.BrokenGlass);
+        GameObject.FindWithTag("HurtEffect").GetComponent<HandleHurt>().EnableVignette();        
+    }
 
 
     public bool GetIsPhoneDown()
