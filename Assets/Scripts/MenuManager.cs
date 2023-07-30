@@ -5,21 +5,26 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
 
+    private GameObject MainMenu;
+    private GameObject AudioSettings;
+
     void Start()
     {
+        MainMenu = GameObject.Find("Start Menu");
+        AudioSettings = GameObject.Find("SoundMenu");
         ChangeToMainSettings();
     }
 
     public void ChangeToMainSettings()
     {
-        GameObject.Find("SoundMenu").SetActive(false);
-        GameObject.Find("Start Menu").SetActive(true);
+        AudioSettings.SetActive(false);
+        MainMenu.SetActive(true);
     }
 
     public void ChangeToAudioSettings()
     {        
-        GameObject.Find("Start Menu").SetActive(false);
-        GameObject.Find("SoundMenu").SetActive(true);
+        AudioSettings.SetActive(true);
+        MainMenu.SetActive(false);
     }
 
 }
