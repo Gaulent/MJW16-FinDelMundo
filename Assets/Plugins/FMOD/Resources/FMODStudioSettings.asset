@@ -377,6 +377,7 @@ MonoBehaviour:
   Banks:
   - Effects
   - music
+  - video
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

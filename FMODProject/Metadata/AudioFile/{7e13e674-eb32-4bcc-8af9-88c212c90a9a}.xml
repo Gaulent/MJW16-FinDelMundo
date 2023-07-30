@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{b36ed67c-e12b-4c74-8f49-89ddce5d7961}">
+	<object class="AudioFile" id="{7e13e674-eb32-4bcc-8af9-88c212c90a9a}">
 		<property name="assetPath">
-			<value>chavalAudio.wav</value>
+			<value>cancionPantallaFinal.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
@@ -11,7 +14,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>5.0383750000000003</value>
+			<value>18.651958333333333</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{6462cf80-dfb5-4d68-ac39-a82c9eed330d}</destination>
