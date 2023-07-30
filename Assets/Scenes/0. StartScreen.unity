@@ -958,10 +958,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2093716828}
-    - target: {fileID: 5976193626607493612, guid: 6f0613c8ceb9b9a459b5cf4154bdae23, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6911905579740307368, guid: 6f0613c8ceb9b9a459b5cf4154bdae23, type: 3}
       propertyPath: m_Name
       value: Background Canvas
