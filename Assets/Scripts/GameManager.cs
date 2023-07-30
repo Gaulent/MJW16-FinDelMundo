@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour, IGameManager
         InternalGameStatus(false);
         gameSpeed = 0;
         playerController.Disable();
-        FindObjectOfType<MovieLoad>().StopVideo(); // TODO NO SE PARA
+        FindObjectOfType<MovieLoad>().StopVideo();
         gameOverCanvas.SetActive(true);
         
         EventSystem es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
@@ -176,7 +176,8 @@ public class GameManager : MonoBehaviour, IGameManager
       //playerController.EnableMovement(status);
         spawnManager.SetSpawnStatus(status);
         backgroundSpawnManager.SetSpawnStatus(status);
-        powerUpSpawnManager.SetSpawnStatus(status);
+        // Should We comment this?
+        //powerUpSpawnManager.SetSpawnStatus(status);
     }
 
     public bool GetGameStatus()
