@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour, IGameManager
     private Slider dopamineGauge;
     private Image dopamineBarGauge;
     [SerializeField] private GameObject gameOverCanvas;
-
+    [SerializeField] private Text ScoreText;
     [SerializeField] private List<int> EnemiesByWaves;
 
     //[SerializeField] private Dictionary<EDifficultyWaves,int> EnemiesByWaves;
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour, IGameManager
 
         HandleDopamine();
         UpdateUI();
-
+        Debug.Log(Time.timeSinceLevelLoad);
     }
 
     private void UpdateUI()
@@ -167,6 +167,8 @@ public class GameManager : MonoBehaviour, IGameManager
         playerController.Disable();
         FindObjectOfType<MovieLoad>().StopVideo();
         gameOverCanvas.SetActive(true);
+
+        ScoreText.text = "HAS SOBREVIVIDO\n" + Time.timeSinceLevelLoad.ToString("F2") + " SEGUNDOS";
         
         EventSystem es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         es.SetSelectedGameObject(null);
