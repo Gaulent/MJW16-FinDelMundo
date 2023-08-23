@@ -2371,7 +2371,8 @@ PrefabInstance:
       value: Background Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2127807318239687960, guid: 6f0613c8ceb9b9a459b5cf4154bdae23, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0613c8ceb9b9a459b5cf4154bdae23, type: 3}

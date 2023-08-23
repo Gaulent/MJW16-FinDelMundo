@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour, IGameManager
         InternalGameStatus(false);
         gameSpeed = 0;
         playerController.Disable();
-        FindObjectOfType<MovieLoad>().StopVideo();
+        FindObjectOfType<VideoPlayerRandomizer>().StopVideo();
         gameOverCanvas.SetActive(true);
 
         ScoreText.text = "HAS SOBREVIVIDO\n" + Time.timeSinceLevelLoad.ToString("F2") + " SEGUNDOS";
