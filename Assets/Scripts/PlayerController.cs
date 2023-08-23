@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private Animator handAnimator;
     private bool isPhoneDown = false;
     private IGameManager myGM;
+    [SerializeField] private AudioClip jumpAudioClip;
+    [SerializeField] private AudioClip getHurtAudioClip;
 
     /*public void EnableMovement(bool movement)
     {
@@ -50,7 +52,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
         if (Input.GetButtonDown("Jump") && !GetIsJumping())
         {
             performJump = true;
-            soundManager.PlaySFX(ESFXType.Jump);
+            //soundManager.PlaySFX(ESFXType.Jump);
+            AudioSource.PlayClipAtPoint(jumpAudioClip, transform.position); // TODO: Buscar otra forma de hacerlo
         }
         
         isPhoneDown = myGM.CanLowerHand() && Input.GetButton("Fire1");
@@ -97,7 +100,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private void GetHurt()
     {
         myGM.GetDamage();
-        soundManager.PlaySFX(ESFXType.BrokenGlass);
+        //soundManager.PlaySFX(ESFXType.BrokenGlass);
+        AudioSource.PlayClipAtPoint(getHurtAudioClip, transform.position); // TODO: Buscar otra forma de hacerlo
         GameObject.FindWithTag("HurtEffect").GetComponent<HandleHurt>().EnableVignette();        
     }
 
