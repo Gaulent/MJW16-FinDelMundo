@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
     void Start()
     {
         //EnableMovement(true);
-        soundManager = GameObject.Find("SoundManager").GetComponent<ISoundManager>();
         myRB = GetComponent<Rigidbody>();
         handAnimator = GetComponentInChildren<Animator>();
         myGM = FindObjectOfType<GameManager>();
