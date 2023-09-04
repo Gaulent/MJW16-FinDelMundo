@@ -10,13 +10,11 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Color gizmoColor = Color.green;
     [SerializeField] private List<GameObject> spawnTypes;
     [SerializeField] private bool active = true;
-    private GameManager myGM;
 
     // Start is called before the first frame update
     void Start()
     {
-        myGM = FindObjectOfType<GameManager>();
-        myGM.onGameOver += StopSpawner;
+        GameManager.Game.onGameOver += StopSpawner;
         StartCoroutine(nameof(SpawnPrefab));
     }
     

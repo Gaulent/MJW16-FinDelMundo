@@ -20,6 +20,7 @@ public class VideoPlayerRandomizer : MonoBehaviour
             Debug.LogError("VideoPlayer don't have any input video");
         myPlayer = GetComponent<VideoPlayer>();
         myPlayer.loopPointReached += EndReached;
+        GameManager.Game.onGameOver += StopVideo;
         PlayRandomVideo(myPlayer);
     }   
 

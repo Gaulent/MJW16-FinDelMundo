@@ -7,6 +7,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    // Singleton
+    public static GameManager Game { get; private set; }
+    private void Awake()
+    {
+        if (Game != null && Game != this) Destroy(this); 
+        else Game = this;
+    }
+
     public Action onGameOver;
     
     bool gameStatus = false;
@@ -167,7 +175,6 @@ public class GameManager : MonoBehaviour
         InternalGameStatus(false);
         gameSpeed = 0;
         playerController.Disable();
-        FindObjectOfType<VideoPlayerRandomizer>().StopVideo();
         gameOverCanvas.SetActive(true);
 
         ScoreText.text = "HAS SOBREVIVIDO\n" + Time.timeSinceLevelLoad.ToString("F2") + " SEGUNDOS";

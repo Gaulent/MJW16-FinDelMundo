@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 10f;
     private Animator handAnimator;
     private bool isPhoneDown = false;
-    private GameManager myGM;
     [SerializeField] private AudioClip jumpAudioClip;
     [SerializeField] private AudioClip getHurtAudioClip;
 
@@ -33,7 +32,6 @@ public class PlayerController : MonoBehaviour
         //EnableMovement(true);
         myRB = GetComponent<Rigidbody>();
         handAnimator = GetComponentInChildren<Animator>();
-        myGM = FindObjectOfType<GameManager>();
     }
 
     void HandlePLayerMovement(float moveAmount)
@@ -54,7 +52,7 @@ public class PlayerController : MonoBehaviour
             AudioSource.PlayClipAtPoint(jumpAudioClip, transform.position); // TODO: Buscar otra forma de hacerlo
         }
         
-        isPhoneDown = myGM.CanLowerHand() && Input.GetButton("Fire1");
+        isPhoneDown = GameManager.Game.CanLowerHand() && Input.GetButton("Fire1");
         
         if(isPhoneDown) 
             handAnimator.SetBool("HandDown",true);
@@ -97,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
     private void GetHurt()
     {
-        myGM.GetDamage();
+        GameManager.Game.GetDamage();
         //soundManager.PlaySFX(ESFXType.BrokenGlass);
         AudioSource.PlayClipAtPoint(getHurtAudioClip, transform.position); // TODO: Buscar otra forma de hacerlo
         GameObject.FindWithTag("HurtEffect").GetComponent<HandleHurt>().EnableVignette();        
