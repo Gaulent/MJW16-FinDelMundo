@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Action onGameOver;
+    
     bool gameStatus = false;
     float dopamina = 100;
     [SerializeField] private float dopamineDepleteRatio = 2f;
@@ -15,11 +17,11 @@ public class GameManager : MonoBehaviour
 
 // DEPRECTED: Difficulty By Time
 //    DateTime currentTime;
-    SpawnManager spawnManager;
+    //SpawnManager spawnManager;
     [SerializeField] private float maxGameSpeed = 10f;
     private float gameSpeed = 0f;
-    SpawnManager backgroundSpawnManager;
-    private SpawnManager powerUpSpawnManager;
+    //SpawnManager backgroundSpawnManager;
+    //private SpawnManager powerUpSpawnManager;
     private bool canLowerHand = true;
     [SerializeField] private Sprite[] damageSprites;
     private int hitPoints = 0;
@@ -44,20 +46,20 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
-        backgroundSpawnManager = GameObject.Find("BackgroundSpawnManager").GetComponent<SpawnManager>();
-        powerUpSpawnManager = GameObject.Find("PowerUpSpawnManager").GetComponent<SpawnManager>();
+        //spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        //backgroundSpawnManager = GameObject.Find("BackgroundSpawnManager").GetComponent<SpawnManager>();
+        //powerUpSpawnManager = GameObject.Find("PowerUpSpawnManager").GetComponent<SpawnManager>();
         dopamineSpriteRenderer = GameObject.Find("Dopamine Background").GetComponent<Image>();
         damageSpriteRenderer = GameObject.FindWithTag("DamageSprite").GetComponent<SpriteRenderer>();
         dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
         dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
 
         playerController.OnGameOverSignal.AddListener(this.GameOver);
-        spawnManager.OnWaveEndedSignal.AddListener(WaveEnded);
+        //spawnManager.OnWaveEndedSignal.AddListener(WaveEnded);
         
         StartGame();
     }
-
+/*
     private void WaveEnded()
     {
         currentDifficultyWave++;
@@ -71,7 +73,7 @@ public class GameManager : MonoBehaviour
             EnemiesByWaves[(int)currentDifficultyWave]
             );
 
-    }
+    }*/
 
     public List<GameObject> GetEnemiesObjectList(EDifficultyWaves difficultyWaves)
     {
@@ -152,6 +154,14 @@ public class GameManager : MonoBehaviour
         gameSpeed = maxGameSpeed;
     }
 
+    public delegate void OnButtonClick();
+    public static event OnButtonClick onButtonClick;
+    public void RaiseOnButtonClick() {
+        if (onButtonClick != null) {
+            onButtonClick();
+        }
+    }    
+    
     public void GameOver()
     {
         InternalGameStatus(false);
@@ -165,6 +175,8 @@ public class GameManager : MonoBehaviour
         EventSystem es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         es.SetSelectedGameObject(null);
         es.SetSelectedGameObject(es.firstSelectedGameObject);
+        
+        onGameOver.Invoke(); // <--
     }
 
     private void InternalGameStatus(bool status)
@@ -176,8 +188,8 @@ public class GameManager : MonoBehaviour
     */
 
       //playerController.EnableMovement(status);
-        spawnManager.SetSpawnStatus(status);
-        backgroundSpawnManager.SetSpawnStatus(status);
+        //spawnManager.SetSpawnStatus(status);
+        //backgroundSpawnManager.SetSpawnStatus(status);
         // Should We comment this?
         //powerUpSpawnManager.SetSpawnStatus(status);
     }
