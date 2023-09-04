@@ -1407,7 +1407,6 @@ MonoBehaviour:
   - {fileID: 3512263104645895271, guid: c21af3fa920b526498cdb1db1ee04d49, type: 3}
   - {fileID: 1470226260408958988, guid: a883487ab4ad9b3479b87671d79714b9, type: 3}
   - {fileID: 1470226260408958988, guid: 42fb2b1906adf454490aa9f1c076cd02, type: 3}
-  active: 1
 --- !u!4 &1437813955
 Transform:
   m_ObjectHideFlags: 0
@@ -1581,14 +1580,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1b4609110168249abb168a8cde4fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 0.4
+  spawnInterval: 0.7
   gizmoColor: {r: 0, g: 0, b: 1, a: 0.49803922}
   spawnTypes:
   - {fileID: 7310336185284393546, guid: acab154ac3616f443a8f5def957a8799, type: 3}
   - {fileID: 4063426619411279901, guid: 735607a676eec8a419ac52cdf2d8736f, type: 3}
   - {fileID: 8662697745877560882, guid: 3dd3d4af05d0df44898852e6f7f60692, type: 3}
   - {fileID: 3284646066388409435, guid: 538efbca349c9fc4981fafbbba2f7fd6, type: 3}
-  active: 1
 --- !u!1 &1712814668
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,14 +2176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1b4609110168249abb168a8cde4fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 0.4
+  spawnInterval: 0.7
   gizmoColor: {r: 0, g: 0, b: 1, a: 0.49803922}
   spawnTypes:
   - {fileID: 7310336185284393546, guid: acab154ac3616f443a8f5def957a8799, type: 3}
   - {fileID: 4063426619411279901, guid: 735607a676eec8a419ac52cdf2d8736f, type: 3}
   - {fileID: 8662697745877560882, guid: 3dd3d4af05d0df44898852e6f7f60692, type: 3}
   - {fileID: 3284646066388409435, guid: 538efbca349c9fc4981fafbbba2f7fd6, type: 3}
-  active: 1
 --- !u!1001 &5631436123736597899
 PrefabInstance:
   m_ObjectHideFlags: 0

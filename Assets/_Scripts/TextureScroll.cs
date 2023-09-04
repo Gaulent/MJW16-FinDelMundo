@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TextureScroll : MonoBehaviour
 {
-    //[SerializeField] private float speed = 1f;
     private MeshRenderer myMR;
 
     // Start is called before the first frame update
