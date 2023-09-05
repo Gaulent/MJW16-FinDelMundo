@@ -31,9 +31,6 @@ public class GameManager : MonoBehaviour
     //SpawnManager backgroundSpawnManager;
     //private SpawnManager powerUpSpawnManager;
     private bool canLowerHand = true;
-    [SerializeField] private Sprite[] damageSprites;
-    private int hitPoints = 0;
-    private SpriteRenderer damageSpriteRenderer;
     private Image dopamineSpriteRenderer;
     [SerializeField] private Sprite[] dopamineSprites;
     private Slider dopamineGauge;
@@ -58,7 +55,6 @@ public class GameManager : MonoBehaviour
         //backgroundSpawnManager = GameObject.Find("BackgroundSpawnManager").GetComponent<SpawnManager>();
         //powerUpSpawnManager = GameObject.Find("PowerUpSpawnManager").GetComponent<SpawnManager>();
         dopamineSpriteRenderer = GameObject.Find("Dopamine Background").GetComponent<Image>();
-        damageSpriteRenderer = GameObject.FindWithTag("DamageSprite").GetComponent<SpriteRenderer>();
         dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
         dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
 
@@ -206,17 +202,7 @@ public class GameManager : MonoBehaviour
         return gameStatus;
     }
     
-    public void GetDamage()
-    {
-        hitPoints++;
-        damageSpriteRenderer.sprite = damageSprites[hitPoints];
-        if (hitPoints >= damageSprites.Length-1)
-        {
-            Debug.Log("TE MORISTE! GAME OVER");
-            GameOver();
-        }
 
-    }
 
     // Testing Time Lines
     public void EndOfLevel()

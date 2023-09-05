@@ -483,13 +483,6 @@ MonoBehaviour:
   dopamineDepleteRatio: 60
   dopamineIncreaseRatio: 20
   maxGameSpeed: 12
-  damageSprites:
-  - {fileID: 0}
-  - {fileID: 21300000, guid: e35105e722ce4d847b4b0dfd756805cf, type: 3}
-  - {fileID: 21300000, guid: c8a82b590e9eeed4e96a6b4098295317, type: 3}
-  - {fileID: 21300000, guid: 5c06079956a15d14c98349088db2aeaa, type: 3}
-  - {fileID: 21300000, guid: 86c1c15f63e8f5f40a65f3ade9f40dcd, type: 3}
-  - {fileID: 21300000, guid: 89fa1e2de6f62ca489888000a4265339, type: 3}
   dopamineSprites:
   - {fileID: 21300000, guid: 96996924df7c540498e34be30784724b, type: 3}
   - {fileID: 21300000, guid: 4ae84c9be6e40a44c949434ffb0b7ee0, type: 3}
@@ -539,9 +532,8 @@ GameObject:
   m_Component:
   - component: {fileID: 774354747}
   - component: {fileID: 774354746}
-  - component: {fileID: 774354748}
   m_Layer: 3
-  m_Name: Post-process Volume
+  m_Name: HurtEffect
   m_TagString: HurtEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -573,25 +565,12 @@ Transform:
   m_GameObject: {fileID: 774354745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.057, z: -0.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1881680397}
+  m_Father: {fileID: 1748776928}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &774354748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 774354745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1436e8c796d048a4e8ba42e45a55eda0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHurtTimer: 0.15
 --- !u!1 &814413957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1386,7 @@ MonoBehaviour:
   - {fileID: 3512263104645895271, guid: c21af3fa920b526498cdb1db1ee04d49, type: 3}
   - {fileID: 1470226260408958988, guid: a883487ab4ad9b3479b87671d79714b9, type: 3}
   - {fileID: 1470226260408958988, guid: 42fb2b1906adf454490aa9f1c076cd02, type: 3}
+  isSpawning: 1
 --- !u!4 &1437813955
 Transform:
   m_ObjectHideFlags: 0
@@ -1587,6 +1567,7 @@ MonoBehaviour:
   - {fileID: 4063426619411279901, guid: 735607a676eec8a419ac52cdf2d8736f, type: 3}
   - {fileID: 8662697745877560882, guid: 3dd3d4af05d0df44898852e6f7f60692, type: 3}
   - {fileID: 3284646066388409435, guid: 538efbca349c9fc4981fafbbba2f7fd6, type: 3}
+  isSpawning: 1
 --- !u!1 &1712814668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,6 +1655,7 @@ GameObject:
   - component: {fileID: 1748776932}
   - component: {fileID: 1748776931}
   - component: {fileID: 1748776929}
+  - component: {fileID: 1748776933}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1695,6 +1677,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2093716829}
+  - {fileID: 774354747}
   - {fileID: 8157149350302929692}
   m_Father: {fileID: 1881680397}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1714,7 +1697,6 @@ MonoBehaviour:
   speed: 4
   jumpForce: 5
   jumpAudioClip: {fileID: 8300000, guid: 7cc756ba1b430b6469a07311e5d5d1eb, type: 3}
-  getHurtAudioClip: {fileID: 8300000, guid: e531e45b9bec0d342a13fd781e395876, type: 3}
 --- !u!136 &1748776931
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1765,6 +1747,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &1748776933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748776924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4eb962d0864854e84079a7b0ca76c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getHurtAudioClip: {fileID: 8300000, guid: e531e45b9bec0d342a13fd781e395876, type: 3}
+  damageSprites:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: e35105e722ce4d847b4b0dfd756805cf, type: 3}
+  - {fileID: 21300000, guid: c8a82b590e9eeed4e96a6b4098295317, type: 3}
+  - {fileID: 21300000, guid: 5c06079956a15d14c98349088db2aeaa, type: 3}
+  - {fileID: 21300000, guid: 86c1c15f63e8f5f40a65f3ade9f40dcd, type: 3}
+  - {fileID: 21300000, guid: 89fa1e2de6f62ca489888000a4265339, type: 3}
 --- !u!1 &1823940941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1976,7 +1978,6 @@ Transform:
   - {fileID: 1748776928}
   - {fileID: 1540451899}
   - {fileID: 278622944}
-  - {fileID: 774354747}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2093716826
@@ -2183,6 +2184,7 @@ MonoBehaviour:
   - {fileID: 4063426619411279901, guid: 735607a676eec8a419ac52cdf2d8736f, type: 3}
   - {fileID: 8662697745877560882, guid: 3dd3d4af05d0df44898852e6f7f60692, type: 3}
   - {fileID: 3284646066388409435, guid: 538efbca349c9fc4981fafbbba2f7fd6, type: 3}
+  isSpawning: 1
 --- !u!1001 &5631436123736597899
 PrefabInstance:
   m_ObjectHideFlags: 0

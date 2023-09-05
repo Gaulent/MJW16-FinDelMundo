@@ -10,12 +10,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rangeMovement = 3f;
     [SerializeField] private float speed = 1f;
     private bool performJump = false;
-    private Rigidbody myRB;
+    private Rigidbody myRb;
     [SerializeField] private float jumpForce = 10f;
     private Animator handAnimator;
     private bool isPhoneDown = false;
     [SerializeField] private AudioClip jumpAudioClip;
-    [SerializeField] private AudioClip getHurtAudioClip;
 
     /*public void EnableMovement(bool movement)
     {
@@ -30,7 +29,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //EnableMovement(true);
-        myRB = GetComponent<Rigidbody>();
+        myRb = GetComponent<Rigidbody>();
         handAnimator = GetComponentInChildren<Animator>();
     }
 
@@ -64,43 +63,16 @@ public class PlayerController : MonoBehaviour
     {
         if (performJump)
         {
-            myRB.velocity = new Vector3(0, jumpForce, 0);
+            myRb.velocity = new Vector3(0, jumpForce, 0);
             performJump = false;
         }
     }
 
     public bool GetIsJumping()
     {
-        return Mathf.Abs(myRB.velocity.y) > 0.1f; // Mejorable TODO
+        return Mathf.Abs(myRb.velocity.y) > 0.1f; // Mejorable TODO
         
     }
-
-
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        //GameOverSignal.Invoke(); <--- TODO
-        
-        if (other.gameObject.layer == LayerMask.NameToLayer("HighHazard"))
-        {
-            GetHurt();
-        }
-        if (!GetIsJumping() && other.gameObject.layer == LayerMask.NameToLayer("LowHazard"))
-        {
-            GetHurt();
-        }
-    }
-
-    private void GetHurt()
-    {
-        GameManager.Game.GetDamage();
-        //soundManager.PlaySFX(ESFXType.BrokenGlass);
-        AudioSource.PlayClipAtPoint(getHurtAudioClip, transform.position); // TODO: Buscar otra forma de hacerlo
-        GameObject.FindWithTag("HurtEffect").GetComponent<HandleHurt>().EnableVignette();        
-    }
-
 
     public bool GetIsPhoneDown()
     {
