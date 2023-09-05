@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float spawnInterval = 0.4f;
     [SerializeField] private Color gizmoColor = Color.green;
     [SerializeField] private List<GameObject> spawnTypes;
+    [SerializeField] private bool isSpawning = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +22,19 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
-            GameObject prefabToSpawn = spawnTypes[Random.Range(0, spawnTypes.Count)];
+            if (isSpawning)
+            {
+                GameObject prefabToSpawn = spawnTypes[Random.Range(0, spawnTypes.Count)];
 
-            Vector3 spawnPosition = GetRandomPosInsideObject();
+                Vector3 spawnPosition = GetRandomPosInsideObject();
 
-            Instantiate(prefabToSpawn, spawnPosition, prefabToSpawn.transform.rotation);
-            yield return new WaitForSeconds(spawnInterval);
+                Instantiate(prefabToSpawn, spawnPosition, prefabToSpawn.transform.rotation);
+                yield return new WaitForSeconds(spawnInterval);
+            }
+            else
+            {
+                yield return new WaitUntil(() => isSpawning);
+            }
         }
     }
 
@@ -54,7 +62,7 @@ public class Spawner : MonoBehaviour
 
     private void StopSpawner()
     {
-        gameObject.SetActive(false);
+        isSpawning = false;
     }
     
 }
