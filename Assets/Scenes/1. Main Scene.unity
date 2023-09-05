@@ -488,10 +488,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4ae84c9be6e40a44c949434ffb0b7ee0, type: 3}
   gameOverCanvas: {fileID: 1292897996}
   ScoreText: {fileID: 1272901550}
-  EnemiesByWaves: 
-  Wave1List: []
-  Wave2List: []
-  Wave3List: []
 --- !u!114 &543298038
 MonoBehaviour:
   m_ObjectHideFlags: 0

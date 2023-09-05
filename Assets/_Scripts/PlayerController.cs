@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    //private bool movement; // Replaced by enableing and disabling scripts
     [SerializeField] private float rangeMovement = 3f;
     [SerializeField] private float speed = 1f;
     private bool performJump = false;
@@ -16,19 +15,9 @@ public class PlayerController : MonoBehaviour
     private bool isPhoneDown = false;
     [SerializeField] private AudioClip jumpAudioClip;
 
-    /*public void EnableMovement(bool movement)
-    {
-        this.movement = movement;
-    }*/
-
-    protected UnityEvent GameOverSignal = new UnityEvent();
-
-    public UnityEvent OnGameOverSignal { get { return GameOverSignal; } }
-
     // Start is called before the first frame update
     void Start()
     {
-        //EnableMovement(true);
         myRb = GetComponent<Rigidbody>();
         handAnimator = GetComponentInChildren<Animator>();
     }

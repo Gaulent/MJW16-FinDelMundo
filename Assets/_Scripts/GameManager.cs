@@ -22,14 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float dopamineDepleteRatio = 2f;
     [SerializeField] private float dopamineIncreaseRatio = 2f;
     PlayerController playerController;
-
-// DEPRECTED: Difficulty By Time
-//    DateTime currentTime;
-    //SpawnManager spawnManager;
     [SerializeField] private float maxGameSpeed = 10f;
     private float gameSpeed = 0f;
-    //SpawnManager backgroundSpawnManager;
-    //private SpawnManager powerUpSpawnManager;
     private bool canLowerHand = true;
     private Image dopamineSpriteRenderer;
     [SerializeField] private Sprite[] dopamineSprites;
@@ -37,57 +31,16 @@ public class GameManager : MonoBehaviour
     private Image dopamineBarGauge;
     [SerializeField] private GameObject gameOverCanvas;
     [SerializeField] private Text ScoreText;
-    [SerializeField] private List<int> EnemiesByWaves;
 
-    //[SerializeField] private Dictionary<EDifficultyWaves,int> EnemiesByWaves;
-    // Failed...s
-    //[SerializeField] public Dictionary<EDifficultyWaves,List<GameObject>> WaveList;
-    [SerializeField] List<GameObject> Wave1List;
-    [SerializeField] List<GameObject> Wave2List;
-    [SerializeField] List<GameObject> Wave3List;
-    
-    EDifficultyWaves currentDifficultyWave;
 
     public void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        //spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
-        //backgroundSpawnManager = GameObject.Find("BackgroundSpawnManager").GetComponent<SpawnManager>();
-        //powerUpSpawnManager = GameObject.Find("PowerUpSpawnManager").GetComponent<SpawnManager>();
         dopamineSpriteRenderer = GameObject.Find("Dopamine Background").GetComponent<Image>();
         dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
         dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
-
-        playerController.OnGameOverSignal.AddListener(this.GameOver);
-        //spawnManager.OnWaveEndedSignal.AddListener(WaveEnded);
         
         StartGame();
-    }
-/*
-    private void WaveEnded()
-    {
-        currentDifficultyWave++;
-        if ((int)currentDifficultyWave >= Enum.GetNames(typeof(EDifficultyWaves)).Length)
-        {
-            /// TODO Make call
-        }
-
-        spawnManager.SetEnemiesWaves(
-            GetEnemiesObjectList(currentDifficultyWave), 
-            EnemiesByWaves[(int)currentDifficultyWave]
-            );
-
-    }*/
-
-    public List<GameObject> GetEnemiesObjectList(EDifficultyWaves difficultyWaves)
-    {
-        switch(difficultyWaves)
-        {
-            case EDifficultyWaves.Wave1: return Wave1List;
-            case EDifficultyWaves.Wave2: return Wave2List;
-            case EDifficultyWaves.Wave3: return Wave3List;
-        }
-        return new List<GameObject>();
     }
 
     public float GetGameSpeed()
@@ -109,19 +62,13 @@ public class GameManager : MonoBehaviour
             dopamineBarGauge.color = Color.magenta;
             dopamineSpriteRenderer.sprite = dopamineSprites[0];
         }
-        else{
+        else
+        {
             dopamineBarGauge.color = Color.red;
             dopamineSpriteRenderer.sprite = dopamineSprites[1];
-            }
+        }
     }
 
-/*
-    private void getInternalTime()
-    {
-        return DateTime.Now - currentTime;
-    }
-
-*/
     private void HandleDopamine()
     {
         if(playerController.GetIsPhoneDown())
@@ -135,13 +82,11 @@ public class GameManager : MonoBehaviour
         {
             dopamina = 0;
             canLowerHand = false;
-            //dopamineStatusDepleting = false;
         }
         if (dopamina > 100)
         {
             dopamina = 100;
             canLowerHand = true;
-            //dopamineStatusDepleting = true;
         }
     }
 
@@ -153,18 +98,9 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         dopamina = 100;
-        //currentTime = System.DateTime.Now;
         InternalGameStatus(true);
         gameSpeed = maxGameSpeed;
     }
-
-    public delegate void OnButtonClick();
-    public static event OnButtonClick onButtonClick;
-    public void RaiseOnButtonClick() {
-        if (onButtonClick != null) {
-            onButtonClick();
-        }
-    }    
     
     public void GameOver()
     {
@@ -185,31 +121,10 @@ public class GameManager : MonoBehaviour
     private void InternalGameStatus(bool status)
     {
         gameStatus = status;
-    /*
-        GameObject.Find("Player").GetComponent<IPlayerController>().EnableMovement(status);
-        GameObject.Find("SpawnManager").GetComponent<ISpawnManager>().SetSpawnStatus(status);
-    */
-
-      //playerController.EnableMovement(status);
-        //spawnManager.SetSpawnStatus(status);
-        //backgroundSpawnManager.SetSpawnStatus(status);
-        // Should We comment this?
-        //powerUpSpawnManager.SetSpawnStatus(status);
     }
 
     public bool GetGameStatus()
     {
         return gameStatus;
     }
-    
-
-
-    // Testing Time Lines
-    public void EndOfLevel()
-    {
-        InternalGameStatus(false);
-        gameSpeed = 0;
-        playerController.Disable();
-    }
-
 }
