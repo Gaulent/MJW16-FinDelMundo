@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class EnemyForwardMovement : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float walkSpeed = 0.5f;
     private SpriteRenderer mySR;
 
     // Start is called before the first frame update
@@ -13,15 +15,16 @@ public class EnemyForwardMovement : MonoBehaviour
         mySR = GetComponent<SpriteRenderer>();
         if (transform.position.x < 0)
             mySR.flipX = true;
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         if(mySR.flipX)
-            transform.position += speed * Time.deltaTime * Vector3.right;
+            transform.position += walkSpeed * Time.deltaTime * Vector3.right;
         else
-            transform.position += speed * Time.deltaTime * Vector3.left;
+            transform.position += walkSpeed * Time.deltaTime * Vector3.left;
+        
+        transform.position += GameManager.Game.GameSpeed * Time.deltaTime * Vector3.back;
     }
 }

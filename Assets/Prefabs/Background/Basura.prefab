@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3136989109574206711}
   - component: {fileID: 3568357839587942692}
   - component: {fileID: 5555741168212021431}
+  - component: {fileID: 5625469151764754051}
   m_Layer: 0
   m_Name: Basura
   m_TagString: Untagged
@@ -97,3 +98,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604cdedf7274e7f49b92cbe73b5c2566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSpeed: 0
+--- !u!65 &5625469151764754051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284646066388409435}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.98, z: 0.64}
+  m_Center: {x: 0, y: 0.49, z: 0}
