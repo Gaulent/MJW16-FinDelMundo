@@ -16,7 +16,7 @@ public class TextureScroll : MonoBehaviour
     void Update()
     {
         Vector2 offset = myMR.material.mainTextureOffset;
-        offset.y -= GameManager.Game.GetGameSpeed()/10f * Time.deltaTime;
+        offset.y -= GameManager.Game.GameSpeed/10f * Time.deltaTime;
         myMR.material.mainTextureOffset = offset;
     }
 }

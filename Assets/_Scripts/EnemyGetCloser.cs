@@ -7,6 +7,6 @@ public class EnemyGetCloser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += GameManager.Game.GetGameSpeed() * Time.deltaTime * Vector3.back;
+        transform.position += GameManager.Game.GameSpeed * Time.deltaTime * Vector3.back;
     }
 }

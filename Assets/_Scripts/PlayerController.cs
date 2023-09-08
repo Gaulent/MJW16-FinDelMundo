@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
             AudioSource.PlayClipAtPoint(jumpAudioClip, transform.position); // TODO: Buscar otra forma de hacerlo
         }
         
-        isPhoneDown = GameManager.Game.CanLowerHand() && Input.GetButton("Fire1");
+        isPhoneDown = GameManager.Game.CanLowerHand && Input.GetButton("Fire1");
         
         if(isPhoneDown) 
             handAnimator.SetBool("HandDown",true);

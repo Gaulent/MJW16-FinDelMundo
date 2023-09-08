@@ -2,118 +2,84 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     // Singleton
     public static GameManager Game { get; private set; }
+
     private void Awake()
     {
-        if (Game != null && Game != this) Destroy(this); 
+        if (Game != null && Game != this) Destroy(this);
         else Game = this;
     }
 
     public Action onGameOver;
-    
+
     bool gameStatus = false;
-    float dopamina = 100;
+    public float Dopamine { get; private set; }
+
     [SerializeField] private float dopamineDepleteRatio = 60f;
     [SerializeField] private float dopamineIncreaseRatio = 20f;
     PlayerController playerController;
     [SerializeField] private float maxGameSpeed = 12f;
-    private float gameSpeed = 0f;
-    private bool canLowerHand = true;
-    private Image dopamineSpriteRenderer;
-    [SerializeField] private Sprite[] dopamineSprites;
-    private Slider dopamineGauge;
-    private Image dopamineBarGauge;
-    [SerializeField] private GameObject gameOverCanvas;
-    [SerializeField] private Text ScoreText;
+    public bool CanLowerHand { get; private set; }
+    public float GameSpeed { get; private set; }
+
+
 
 
     public void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        dopamineSpriteRenderer = GameObject.Find("Dopamine Background").GetComponent<Image>();
-        dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
-        dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
-        
+        Dopamine = 100;
+        CanLowerHand = true;
         StartGame();
-    }
-
-    public float GetGameSpeed()
-    {
-        return gameSpeed;
     }
 
     public void Update()
     {
         HandleDopamine();
-        UpdateUI();
     }
 
-    private void UpdateUI()
-    {
-        dopamineGauge.value = dopamina / 100f;
-        if (canLowerHand)
-        {
-            dopamineBarGauge.color = Color.magenta;
-            dopamineSpriteRenderer.sprite = dopamineSprites[0];
-        }
-        else
-        {
-            dopamineBarGauge.color = Color.red;
-            dopamineSpriteRenderer.sprite = dopamineSprites[1];
-        }
-    }
 
     private void HandleDopamine()
     {
         if(playerController.GetIsPhoneDown())
-            dopamina -= dopamineDepleteRatio * Time.deltaTime;
+            Dopamine -= dopamineDepleteRatio * Time.deltaTime;
         else
         {
-            dopamina += dopamineIncreaseRatio * Time.deltaTime;            
+            Dopamine += dopamineIncreaseRatio * Time.deltaTime;            
         }
 
-        if (dopamina < 0)
+        if (Dopamine < 0)
         {
-            dopamina = 0;
-            canLowerHand = false;
+            Dopamine = 0;
+            CanLowerHand = false;
         }
-        if (dopamina > 100)
+        if (Dopamine > 100)
         {
-            dopamina = 100;
-            canLowerHand = true;
+            Dopamine = 100;
+            CanLowerHand = true;
         }
     }
 
-    public bool CanLowerHand()
-    {
-        return canLowerHand;
-    }
+
 
     public void StartGame()
     {
-        dopamina = 100;
+        Dopamine = 100;
         InternalGameStatus(true);
-        gameSpeed = maxGameSpeed;
+        GameSpeed = maxGameSpeed;
     }
     
     public void GameOver()
     {
         InternalGameStatus(false);
-        gameSpeed = 0;
+        GameSpeed = 0;
         playerController.Disable();
-        gameOverCanvas.SetActive(true);
 
-        ScoreText.text = "HAS SOBREVIVIDO\n" + Time.timeSinceLevelLoad.ToString("F2") + " SEGUNDOS";
         
-        EventSystem es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-        es.SetSelectedGameObject(null);
-        es.SetSelectedGameObject(es.firstSelectedGameObject);
         
         onGameOver.Invoke(); // <--
     }
