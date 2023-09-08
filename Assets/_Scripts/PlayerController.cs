@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.Game.onGameOver += OnGameOver;
         myRb = GetComponent<Rigidbody>();
         handAnimator = GetComponentInChildren<Animator>();
     }
@@ -36,7 +37,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !GetIsJumping())
         {
             performJump = true;
-            //soundManager.PlaySFX(ESFXType.Jump);
             AudioSource.PlayClipAtPoint(jumpAudioClip, transform.position); // TODO: Buscar otra forma de hacerlo
         }
         
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         return isPhoneDown;
     }
 
-    public void Disable()
+    private void OnGameOver()
     {
         enabled = false;
     }

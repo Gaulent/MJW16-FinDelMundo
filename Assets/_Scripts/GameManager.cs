@@ -14,9 +14,10 @@ public class GameManager : MonoBehaviour
         else Game = this;
     }
 
+    
     public Action onGameOver;
 
-    bool gameStatus = false;
+    
     public float Dopamine { get; private set; }
 
     [SerializeField] private float dopamineDepleteRatio = 60f;
@@ -26,15 +27,13 @@ public class GameManager : MonoBehaviour
     public bool CanLowerHand { get; private set; }
     public float GameSpeed { get; private set; }
 
-
-
-
+    
     public void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         Dopamine = 100;
         CanLowerHand = true;
-        StartGame();
+        GameSpeed = maxGameSpeed;
     }
 
     public void Update()
@@ -63,34 +62,10 @@ public class GameManager : MonoBehaviour
             CanLowerHand = true;
         }
     }
-
-
-
-    public void StartGame()
-    {
-        Dopamine = 100;
-        InternalGameStatus(true);
-        GameSpeed = maxGameSpeed;
-    }
-    
+   
     public void GameOver()
     {
-        InternalGameStatus(false);
         GameSpeed = 0;
-        playerController.Disable();
-
-        
-        
         onGameOver.Invoke(); // <--
-    }
-
-    private void InternalGameStatus(bool status)
-    {
-        gameStatus = status;
-    }
-
-    public bool GetGameStatus()
-    {
-        return gameStatus;
     }
 }
