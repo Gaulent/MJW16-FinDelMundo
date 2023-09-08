@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectGetCloser : MonoBehaviour
+public class EnemyGetCloser : MonoBehaviour
 {
     // Update is called once per frame
     void Update()

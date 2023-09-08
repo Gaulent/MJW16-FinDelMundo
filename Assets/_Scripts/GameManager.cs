@@ -19,10 +19,10 @@ public class GameManager : MonoBehaviour
     
     bool gameStatus = false;
     float dopamina = 100;
-    [SerializeField] private float dopamineDepleteRatio = 2f;
-    [SerializeField] private float dopamineIncreaseRatio = 2f;
+    [SerializeField] private float dopamineDepleteRatio = 60f;
+    [SerializeField] private float dopamineIncreaseRatio = 20f;
     PlayerController playerController;
-    [SerializeField] private float maxGameSpeed = 10f;
+    [SerializeField] private float maxGameSpeed = 12f;
     private float gameSpeed = 0f;
     private bool canLowerHand = true;
     private Image dopamineSpriteRenderer;
