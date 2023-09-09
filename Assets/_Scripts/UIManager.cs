@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class UIManager : MonoBehaviour
     private Slider dopamineGauge;
     private Image dopamineBarGauge;    
     [SerializeField] private GameObject gameOverCanvas;
-    [SerializeField] private Text ScoreText;
+    [SerializeField] private Text scoreText;
+    private PlayerDopamine playerDopamine;
+    private PlayerController playerController;
     
     
     // Start is called before the first frame update
@@ -22,14 +25,16 @@ public class UIManager : MonoBehaviour
         
         dopamineSpriteRenderer = GameObject.Find("Dopamine Background").GetComponent<Image>();
         dopamineGauge = GameObject.FindWithTag("DopamineGauge").GetComponent<Slider>();
-        dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();    
+        dopamineBarGauge = dopamineGauge.GetComponentInChildren<Image>();
+        playerDopamine = FindObjectOfType<PlayerDopamine>();
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        dopamineGauge.value = GameManager.Game.Dopamine / 100f;
-        if (GameManager.Game.CanLowerHand)
+        dopamineGauge.value = playerDopamine.Dopamine / 100f;
+        if (playerController.CanLowerHand)
         {
             dopamineBarGauge.color = Color.magenta;
             dopamineSpriteRenderer.sprite = dopamineNormal;
@@ -44,7 +49,7 @@ public class UIManager : MonoBehaviour
     private void OnGameOver()
     {
         gameOverCanvas.SetActive(true);
-        ScoreText.text = "HAS SOBREVIVIDO\n" + Time.timeSinceLevelLoad.ToString("F2") + " SEGUNDOS";
+        scoreText.text = "HAS SOBREVIVIDO\n" + Time.timeSinceLevelLoad.ToString("F2") + " SEGUNDOS";
         
         EventSystem es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         es.SetSelectedGameObject(null);

@@ -10,17 +10,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 1f;
     private bool performJump = false;
     private Rigidbody myRb;
-    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float jumpForce = 5f;
     private Animator handAnimator;
-    private bool isPhoneDown = false;
     [SerializeField] private AudioClip jumpAudioClip;
+    public bool CanLowerHand { get; set; }
+    public bool IsPhoneDown { get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
+        IsPhoneDown = false;
         GameManager.Game.onGameOver += OnGameOver;
         myRb = GetComponent<Rigidbody>();
         handAnimator = GetComponentInChildren<Animator>();
+        CanLowerHand = true;
     }
 
     void HandlePLayerMovement(float moveAmount)
@@ -40,9 +43,9 @@ public class PlayerController : MonoBehaviour
             AudioSource.PlayClipAtPoint(jumpAudioClip, transform.position); // TODO: Buscar otra forma de hacerlo
         }
         
-        isPhoneDown = GameManager.Game.CanLowerHand && Input.GetButton("Fire1");
+        IsPhoneDown = CanLowerHand && Input.GetButton("Fire1");
         
-        if(isPhoneDown) 
+        if(IsPhoneDown) 
             handAnimator.SetBool("HandDown",true);
         else
             handAnimator.SetBool("HandDown",false);
@@ -57,15 +60,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool GetIsJumping()
+    private bool GetIsJumping()
     {
         return Mathf.Abs(myRb.velocity.y) > 0.1f; // Mejorable TODO
         
-    }
-
-    public bool GetIsPhoneDown()
-    {
-        return isPhoneDown;
     }
 
     private void OnGameOver()

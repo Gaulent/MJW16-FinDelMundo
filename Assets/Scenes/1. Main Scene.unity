@@ -516,8 +516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec564f23f3dacf545a5b1c287c312c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dopamineDepleteRatio: 60
-  dopamineIncreaseRatio: 20
   maxGameSpeed: 12
 --- !u!1 &774354745
 GameObject:
@@ -1651,6 +1649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eeed1c46dcb5a04281eb9fb50805131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dopamineDepleteRatio: 60
+  dopamineIncreaseRatio: 20
 --- !u!1 &1823940941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,7 +1770,7 @@ MonoBehaviour:
   dopamineNormal: {fileID: 21300000, guid: 96996924df7c540498e34be30784724b, type: 3}
   dopamineLow: {fileID: 21300000, guid: 4ae84c9be6e40a44c949434ffb0b7ee0, type: 3}
   gameOverCanvas: {fileID: 2136462959}
-  ScoreText: {fileID: 1272901550}
+  scoreText: {fileID: 1272901550}
 --- !u!1 &1837860961
 GameObject:
   m_ObjectHideFlags: 0
