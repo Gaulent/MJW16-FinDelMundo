@@ -320,8 +320,8 @@ GameObject:
   m_Component:
   - component: {fileID: 278622944}
   - component: {fileID: 278622943}
-  - component: {fileID: 278622945}
   - component: {fileID: 278622946}
+  - component: {fileID: 278622945}
   m_Layer: 0
   m_Name: Shredder
   m_TagString: Untagged
@@ -482,7 +482,6 @@ GameObject:
   m_Component:
   - component: {fileID: 543298036}
   - component: {fileID: 543298037}
-  - component: {fileID: 543298038}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -520,36 +519,6 @@ MonoBehaviour:
   dopamineDepleteRatio: 60
   dopamineIncreaseRatio: 20
   maxGameSpeed: 12
---- !u!114 &543298038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543298035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Events:
-    m_Signals:
-    - {fileID: 11400000, guid: f0515d95b38093548893ddb2822fd447, type: 2}
-    m_Events:
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 543298037}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: EndOfLevel
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &774354745
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +616,7 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 2928423235780051504, guid: 834fb84014079f6409be9523381e80d0, type: 2}
-    value: {fileID: 543298038}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 4bdc39f120ca9f540b98ff92b0f6bc28: {fileID: 543298035}
@@ -1226,7 +1195,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1352274582}
-  - component: {fileID: 1352274583}
   m_Layer: 0
   m_Name: SYSTEMS
   m_TagString: Untagged
@@ -1254,26 +1222,6 @@ Transform:
   - {fileID: 814413958}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &1352274583
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352274581}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 834fb84014079f6409be9523381e80d0, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 2928423235780051504, guid: 834fb84014079f6409be9523381e80d0, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References:
-    - 4bdc39f120ca9f540b98ff92b0f6bc28: {fileID: 543298035}
 --- !u!1 &1437813953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,6 +1527,7 @@ GameObject:
   - component: {fileID: 1748776931}
   - component: {fileID: 1748776929}
   - component: {fileID: 1748776933}
+  - component: {fileID: 1748776934}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1690,6 +1639,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5c06079956a15d14c98349088db2aeaa, type: 3}
   - {fileID: 21300000, guid: 86c1c15f63e8f5f40a65f3ade9f40dcd, type: 3}
   - {fileID: 21300000, guid: 89fa1e2de6f62ca489888000a4265339, type: 3}
+--- !u!114 &1748776934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748776924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eeed1c46dcb5a04281eb9fb50805131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1823940941
 GameObject:
   m_ObjectHideFlags: 0

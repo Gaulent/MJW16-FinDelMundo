@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
 
                 Vector3 spawnPosition = GetRandomPosInsideObject();
 
-                Instantiate(prefabToSpawn, spawnPosition, prefabToSpawn.transform.rotation);
+                Instantiate(prefabToSpawn, spawnPosition, prefabToSpawn.transform.rotation,transform.parent);
                 yield return new WaitForSeconds(spawnInterval);
             }
             else
