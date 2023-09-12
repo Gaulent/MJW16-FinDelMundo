@@ -1682,7 +1682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eeed1c46dcb5a04281eb9fb50805131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dopamineDepleteRatio: 60
+  dopamineDepleteRatio: 20
   dopamineIncreaseRatio: 20
 --- !u!1 &1823940941
 GameObject:

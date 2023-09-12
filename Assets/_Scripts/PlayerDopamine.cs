@@ -8,6 +8,7 @@ public class PlayerDopamine : MonoBehaviour
     [SerializeField] private float dopamineDepleteRatio = 60f;
     [SerializeField] private float dopamineIncreaseRatio = 20f;
     PlayerController playerController;
+    private Animator handAnimator;
     
     
     // Start is called before the first frame update
@@ -15,12 +16,13 @@ public class PlayerDopamine : MonoBehaviour
     {
         Dopamine = 100;
         playerController = GetComponent<PlayerController>();
+        handAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerController.IsPhoneDown)
+        if(!handAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hand Idle"))
             Dopamine -= dopamineDepleteRatio * Time.deltaTime;
         else
         {
