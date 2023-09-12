@@ -482,6 +482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543298036}
   - component: {fileID: 543298037}
+  - component: {fileID: 543298038}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -517,6 +518,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxGameSpeed: 12
+--- !u!114 &543298038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543298035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: f0515d95b38093548893ddb2822fd447, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 543298037}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: GameOver
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &774354745
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,8 +644,10 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 2928423235780051504, guid: 834fb84014079f6409be9523381e80d0, type: 2}
-    value: {fileID: 0}
+  - key: {fileID: -2873481571604632136, guid: 834fb84014079f6409be9523381e80d0, type: 2}
+    value: {fileID: 543298038}
+  - key: {fileID: -4777354635729214416, guid: 834fb84014079f6409be9523381e80d0, type: 2}
+    value: {fileID: 1437813953}
   m_ExposedReferences:
     m_References:
     - 4bdc39f120ca9f540b98ff92b0f6bc28: {fileID: 543298035}
