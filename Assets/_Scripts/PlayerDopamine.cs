@@ -22,12 +22,11 @@ public class PlayerDopamine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!handAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hand Idle"))
+        if(!handAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hand Idle") ||
+           !handAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hand Rising"))
             Dopamine -= dopamineDepleteRatio * Time.deltaTime;
         else
-        {
             Dopamine += dopamineIncreaseRatio * Time.deltaTime;            
-        }
 
         if (Dopamine < 0)
         {
